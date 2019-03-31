@@ -20,4 +20,7 @@ from polls import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^client/', views.client_api),
+    url(r'^login/', views.login_api),
+    url(r'^restaurants/', views.restaurants_api),
+    url(r'^reservations/', views.reservations_api),
 ]
