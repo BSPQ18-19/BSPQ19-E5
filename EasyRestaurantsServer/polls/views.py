@@ -12,7 +12,7 @@ from rest_framework.renderers import JSONRenderer
 from polls.forms import *
 
 @csrf_exempt
-def client_api(request):
+def register_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
         if not User.objects.filter(username=data['username']).exists():
