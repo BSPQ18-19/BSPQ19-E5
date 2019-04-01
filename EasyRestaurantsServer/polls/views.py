@@ -32,13 +32,18 @@ def client_api(request):
 def login_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
-        user = authenticate(username=data['username'], password=data['password'])
-        favourites = Client.objects.get(user=user).favourites
-        favs = [restaurant['name'] for restaurant in favourites.values()]
-        if user is not None:
-            return JsonResponse(favs, safe=False)
+        if (User.objects.filter(username=data['username']).exists()):
+            user = authenticate(username=data['username'], password=data['password'])
+            favourites = Client.objects.get(user=user).favourites
+            favs =[restaurant['name'] for restaurant in favourites.values()]
+            if user is not None:
+                return JsonResponse(favs, safe=False)
+            else:
+                return JsonResponse("Invalid credentials", safe=False)
         else:
-            return JsonResponse("Invalid credentials", safe=False)
+            return JsonResponse("Invalid user", safe=False)
+
+
 
 
 @csrf_exempt
