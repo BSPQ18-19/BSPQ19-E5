@@ -1,1 +1,2 @@
-com\EasyRestaurantClient\app\App.class
+com\EasyRestaurantClient\app\Reservation.class
+com\EasyRestaurantClient\app\UserAuthentication.class
