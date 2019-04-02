@@ -11,14 +11,8 @@ import org.junit.Test;
 public class UserAuthenticationTest
 {
     /**
-     * Rigorous Test :-)
+     * Test the login with a user that doesn't exist and with an existing one
      */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-
     @Test
     public void loginTest(){
         UserAuthentication userAuthentication = new UserAuthentication();
@@ -29,6 +23,10 @@ public class UserAuthenticationTest
         assertEquals("Correct", result2);
     }
 
+    /**
+     * Tries to register the same client twice, first to check it is done correctly and
+     * then to test that it is incorrect if it already exists
+     */
     @Test
     public void registerRest(){
         UserAuthentication userAuthentication = new UserAuthentication();

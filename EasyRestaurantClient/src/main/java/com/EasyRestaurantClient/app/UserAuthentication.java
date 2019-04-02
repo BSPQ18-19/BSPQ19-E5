@@ -18,6 +18,12 @@ public class UserAuthentication
     }
 
 
+    /**
+     * Tries to authenticate the user on the server
+     * @param username Username of the client
+     * @param password Password of the client
+     * @return Correct if there hasn't been any problems
+     */
     String login(final String username, final String password) {
         InputStream in = null;
         OutputStream out = null;
@@ -82,6 +88,14 @@ public class UserAuthentication
         return resp;
     }
 
+    /**
+     * Tries to register a new client
+     * @param username Username of the client
+     * @param password Password of the client
+     * @param name Name of the client
+     * @param email Email of the client
+     * @return User created if everything went fine
+     */
     String register(String username, String password, String name, String email){
         InputStream in = null;
         OutputStream out = null;

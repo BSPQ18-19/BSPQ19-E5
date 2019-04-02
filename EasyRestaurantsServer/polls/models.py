@@ -31,3 +31,6 @@ class Reservation(models.Model):
     comments = models.CharField(max_length=200, blank=True)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     user = models.ForeignKey(Client, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.date)

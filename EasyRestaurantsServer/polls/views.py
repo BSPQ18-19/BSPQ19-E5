@@ -1,8 +1,6 @@
 from django.contrib.auth import authenticate
 from django.shortcuts import render
 
-# Create your views here.
-
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
@@ -76,7 +74,6 @@ def reservations_api(request):
         else:
             return JsonResponse("Wrong details", safe=False)
     elif request.method == 'GET':
-        # data = JSONParser().parse(request)
         if User.objects.filter(username=request.GET['user']).exists():
             user = User.objects.get(username=request.GET['user'])
             client = Client.objects.get(user=user)

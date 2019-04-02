@@ -14,6 +14,15 @@ public class Reservation {
         System.out.println( "Hello World!" );
     }
 
+    /**
+     * Function to request the server to create a reservation
+     * @param username Username of the user
+     * @param restaurant Name of the restaurant where the reservation should be done
+     * @param date Date in a string format YYYY-MM-DD HH:MM
+     * @param number_clients Number of attendants
+     * @param comments Comments in case there were any
+     * @return True if it is correct
+     */
     Boolean make_reservation(String username, String restaurant, String date, Integer number_clients, String comments){
         InputStream in = null;
         OutputStream out = null;

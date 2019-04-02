@@ -1,15 +1,12 @@
 from django.contrib import admin
 from .models import Client, Restaurant, Reservation
-# Register your models here.
 
 class ClientAdmin(admin.ModelAdmin):
     list_display = ('get_name',)
-    # list_filter = ['get_name']
     search_fields = ['get_name']
     def get_name(self, obj):
         return obj.user.username
     get_name.short_description = 'User'
-    # get_name.admin_order_field = 'client__user'
 
 
 class RestaurantAdmin(admin.ModelAdmin):

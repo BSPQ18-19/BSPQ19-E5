@@ -13,14 +13,9 @@ import java.text.ParseException;
 public class ReservationTest {
 
     /**
-     * Rigorous Test :-)
+     * Tries to create a test reservation
+     * @throws ParseException
      */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-
     @Test
     public void testReservation() throws ParseException {
         Reservation reservation = new Reservation();
