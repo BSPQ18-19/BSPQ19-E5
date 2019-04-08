@@ -35,7 +35,7 @@ public class Reservation {
      * @param username       Username of the user
      * @param restaurant     Name of the restaurant where the reservation should be done
      * @param date           Date in a string format YYYY-MM-DD HH:MM
-     * @param number_clients
+     * @param number_clients Number of clients expected
      * @param comments       Comments in case there were any
      * @return True if it is correct
      */
@@ -55,7 +55,7 @@ public class Reservation {
         hReqRes.setBounds(144, 21, 132, 14);
         myFrame.getContentPane().add(hReqRes);
 
-        //Creating Label for the fields
+        //Creating Labels for the fields
         JLabel hUsername = new JLabel("Username  :");
         hUsername.setBounds(100, 51, 89, 14);
         myFrame.getContentPane().add(hUsername);
@@ -90,7 +90,7 @@ public class Reservation {
         txtDate.setBounds(207, 101, 200, 20);
         myFrame.getContentPane().add(txtDate);
 
-
+        //For the number of clients creating a field which accepts only integer numbers as input.
         NumberFormat format = NumberFormat.getInstance();
         NumberFormatter formatter = new NumberFormatter(format);
         formatter.setValueClass(Integer.class);
@@ -100,8 +100,6 @@ public class Reservation {
         // If you want the value to be committed on each keystroke instead of focus lost
         formatter.setCommitsOnValidEdit(true);
         JFormattedTextField txtNumber_clients = new JFormattedTextField(formatter);
-
-        //final TextField  = new TextField();
         txtNumber_clients.setBounds(230, 127, 30, 20);
         myFrame.getContentPane().add(txtNumber_clients);
 
@@ -114,13 +112,13 @@ public class Reservation {
         final String username = txtUsername.getText();
         final String restaurant = txtRestaurant.getText();
         final String date = txtDate.getText();
-        Object obj_number_clients = 0;
+        Object obj_number_clients;
         obj_number_clients = txtNumber_clients.getValue();
         final Integer number_clients = (Integer) obj_number_clients;
         final String comments = txtComments.getText();
 
 
-        // Button OK
+        // Button SUBMIT , by pressing this button you make your reservation submitted.
         JButton btnOK = new JButton("Submit");
         btnOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -132,7 +130,7 @@ public class Reservation {
                 }
                 System.out.println("Reservation is  " + response);
                 myFrame.dispose();
-                if (!response)negRespondMessage();
+                if (!response)negRespondMessage(); // depending on if the reservation is valid or not, the apprpriate message appears.
                 else posRespondMessage();
             }
 
@@ -140,12 +138,11 @@ public class Reservation {
         btnOK.setBounds(170, 300, 74, 23);
         myFrame.getContentPane().add(btnOK);
 
-        // Cancel Button
-
+        //  Button CANCEL
         JButton btnCancel = new JButton("Cancel");
         btnCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                System.exit(0); // by pressing this button you exit from the program.
                 try {
                     dispose();
                 } catch (Exception e1) {
