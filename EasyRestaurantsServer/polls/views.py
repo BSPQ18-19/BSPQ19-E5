@@ -17,8 +17,8 @@ def register_api(request):
             new = User.objects.create()
             new.username = data['username']
             new.first_name = data['name']
-            new.password = data['password']
             new.email = data['email']
+            new.set_password(data['password'])
             new.save()
 
             cl = Client.objects.create(user=new)
@@ -30,10 +30,13 @@ def register_api(request):
 def login_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
-        if (User.objects.filter(username=data['username']).exists()):
+        if User.objects.filter(username=data['username']).exists():
             user = authenticate(username=data['username'], password=data['password'])
-            favourites = Client.objects.get(user=user).favourites
-            favs =[restaurant['name'] for restaurant in favourites.values()]
+            try:
+                favourites = Client.objects.get(user=user).favourites
+                favs =[restaurant['name'] for restaurant in favourites.values()]
+            except:
+                favs = []
             if user is not None:
                 return JsonResponse(favs, safe=False)
             else:

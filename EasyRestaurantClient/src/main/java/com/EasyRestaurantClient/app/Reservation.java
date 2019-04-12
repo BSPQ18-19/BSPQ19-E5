@@ -6,6 +6,9 @@ import org.json.JSONObject;
 import java.awt.*;
 import java.io.*;
 import java.net.HttpURLConnection;
+<<<<<<< HEAD
+import java.net.URL;;
+=======
 import java.net.URL;
 import java.text.NumberFormat;
 
@@ -15,11 +18,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import static com.sun.deploy.uitoolkit.ToolkitStore.dispose;
+>>>>>>> 550d81d16e049dc306c0cdab61102f54112eb5a9
 
 public class Reservation {
 
     static public void main(String[] args) {
         System.out.println("Hello World!");
+<<<<<<< HEAD
+
+    }
+=======
 
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -29,6 +37,7 @@ public class Reservation {
     }
 
 
+>>>>>>> 550d81d16e049dc306c0cdab61102f54112eb5a9
     /**
      * Function to request the server to create a reservation
      *
@@ -39,6 +48,8 @@ public class Reservation {
      * @param comments       Comments in case there were any
      * @return True if it is correct
      */
+<<<<<<< HEAD
+=======
 
 
     static public void request_reservation() {
@@ -157,6 +168,7 @@ public class Reservation {
 
     }
 
+>>>>>>> 550d81d16e049dc306c0cdab61102f54112eb5a9
     static Boolean make_reservation(String username, String restaurant, String date, Integer number_clients, String comments) {
         InputStream in = null;
         OutputStream out = null;
@@ -217,6 +229,8 @@ public class Reservation {
     }
 
 
+<<<<<<< HEAD
+=======
     public static void negRespondMessage() {
         JFrame myFrame2 = new JFrame();
 
@@ -278,4 +292,5 @@ public class Reservation {
 
     }
 
+>>>>>>> 550d81d16e049dc306c0cdab61102f54112eb5a9
 }
