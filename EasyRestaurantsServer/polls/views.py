@@ -17,11 +17,11 @@ def register_api(request):
             new = User.objects.create()
             new.username = data['username']
             new.first_name = data['name']
-            new.password = data['password']
             new.email = data['email']
+            new.set_password(data['password'])
             new.save()
 
-            cl = Client.objects.create(user=new)
+            Client.objects.create(user=new)
             return JsonResponse("User created", safe=False)
         else:
             return JsonResponse("Username already exists", safe=False)
@@ -30,10 +30,13 @@ def register_api(request):
 def login_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
-        if (User.objects.filter(username=data['username']).exists()):
+        if User.objects.filter(username=data['username']).exists():
             user = authenticate(username=data['username'], password=data['password'])
-            favourites = Client.objects.get(user=user).favourites
-            favs =[restaurant['name'] for restaurant in favourites.values()]
+            try:
+                favourites = Client.objects.get(user=user).favourites
+                favs =[restaurant['name'] for restaurant in favourites.values()]
+            except:
+                favs = []
             if user is not None:
                 return JsonResponse(favs, safe=False)
             else:
@@ -44,11 +47,20 @@ def login_api(request):
 
 
 
+#Used for both getting favourites restaurants of a user or filtering all restaurants
 @csrf_exempt
 def restaurants_api(request):
     if request.method == 'GET':
+        try:
+            user = User.objects.all().get(username=request.GET['user'])
+            filtered = Client.objects.all().get(user=user).favourites.all()
+        except:
+            qdict={}
+            for key in request.GET.keys(): #Builds dicctionary for the query to filter restaurants
+                qdict[key]= request.GET[key]
+            filtered = Restaurant.objects.all().filter(**qdict)
         restaurants = []
-        for restaurant in Restaurant.objects.all():
+        for restaurant in filtered:
             c = {}
             c['name'] = restaurant.name
             c['location'] = restaurant.location
@@ -60,6 +72,7 @@ def restaurants_api(request):
             c['type'] = restaurant.type
             restaurants.append(c)
         return JsonResponse(restaurants, safe=False)
+
 
 @csrf_exempt
 def reservations_api(request):

@@ -8,8 +8,10 @@ import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.URL;;
 import java.net.URL;
 
+<<<<<<< HEAD
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,9 +25,12 @@ import java.util.GregorianCalendar;
 
 import static com.sun.deploy.uitoolkit.ToolkitStore.dispose;
 
+=======
+>>>>>>> 36627917d52b43e0823c70af3159a48228ad0727
 public class Reservation {
     final static String DATE_FORMAT = "yyyy-MM-dd";
 
+<<<<<<< HEAD
     private JPanel reservationPanel;
     private JButton cancelButton;
     private JButton OKButton;
@@ -106,6 +111,12 @@ public class Reservation {
     }
 
 
+=======
+    static public void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+
+>>>>>>> 36627917d52b43e0823c70af3159a48228ad0727
     /**
      * Function to request the server to create a reservation
      *
@@ -116,9 +127,13 @@ public class Reservation {
      * @param comments       Comments in case there were any
      * @return True if it is correct
      */
+<<<<<<< HEAD
 
 
     static Boolean make_reservation(String username, String restaurant, String date, Integer number_clients, String comments) {
+=======
+    Boolean make_reservation(String username, String restaurant, String date, Integer number_clients, String comments) {
+>>>>>>> 36627917d52b43e0823c70af3159a48228ad0727
         InputStream in = null;
         OutputStream out = null;
         Boolean response = false;
@@ -176,6 +191,7 @@ public class Reservation {
         }
         return response;
     }
+<<<<<<< HEAD
 
 
     public static void negRespondMessage() {
@@ -242,3 +258,6 @@ public class Reservation {
 
 
 }
+=======
+}
+>>>>>>> 36627917d52b43e0823c70af3159a48228ad0727

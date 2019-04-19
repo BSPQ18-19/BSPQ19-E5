@@ -17,7 +17,7 @@ class Restaurant(models.Model):
 
 
 class Client(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     favourites = models.ManyToManyField(Restaurant, blank=True)
 
     def __str__(self):

@@ -1,2 +1,19 @@
-EasyRestaurantClient/.idea/*
-EasyRestaurantServer/.idea/*
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+*.sqlite3
+.idea/
+bin/
+out/
+log/
+
+# Eclipse project file
+.settings/
+.classpath
+.project
+.recommenders
+.metadata
+
+# Maven
+target/
