@@ -4,28 +4,105 @@ package com.EasyRestaurantClient.app;
 import org.json.JSONObject;
 
 import java.awt.*;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.NumberFormat;
 
 import javax.swing.*;
-import javax.swing.text.NumberFormatter;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 
 import static com.sun.deploy.uitoolkit.ToolkitStore.dispose;
 
 public class Reservation {
+    final static String DATE_FORMAT = "yyyy-MM-dd";
+
+    private JPanel reservationPanel;
+    private JButton cancelButton;
+    private JButton OKButton;
+    private JTextPane nameTextPane;
+    private JTextField NameInput;
+    private JTextArea dayTextArea;
+    private JComboBox YearInput;
+    private JComboBox DayInput;
+    private JComboBox MonthInput;
+    private JTextField RestaurantInput;
+    private JTextField CommentInput;
+    private JComboBox HourInput;
+    private JComboBox MinuteInput;
+    private JComboBox GuestsInput;
+    private JTextPane numofguests;
+
+
+    public Reservation() {
+
+
+
+
+        OKButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+
+                    //check if date has a correct form
+
+
+                    String date = YearInput.getSelectedItem().toString()+"-"+MonthInput.getSelectedItem().toString()+"-"+DayInput.getSelectedItem().toString();
+                    String daytime = date+" "+HourInput.getSelectedItem().toString()+":"+MinuteInput.getSelectedItem().toString();
+                    System.out.println(daytime);
+                    String str_number_clients = (GuestsInput.getSelectedItem().toString());
+                    int number_clients = Integer.parseInt(str_number_clients);
+                    final boolean response = make_reservation(NameInput.getText(), RestaurantInput.getText(),daytime, number_clients, CommentInput.getText());
+
+                    try {
+                        dispose();
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+                    System.out.println("Reservation is  " + response);
+                    reservationPanel.disable();
+                    if (!response)negRespondMessage(); // depending on if the reservation is valid or not, the apprpriate message appears.
+                    else posRespondMessage();
+
+            }
+        });
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0); // by pressing this button you exit from the program.
+                try {
+                    dispose();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+        });
+
+
+
+    }
 
     static public void main(String[] args) {
         System.out.println("Hello World!");
+        JFrame frame = new JFrame("app");
+        frame.setContentPane(new Reservation().reservationPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
 
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                request_reservation();
-            }
-        });
+
+
     }
 
 
@@ -40,122 +117,6 @@ public class Reservation {
      * @return True if it is correct
      */
 
-
-    static public void request_reservation() {
-
-        final JFrame myFrame = new JFrame();
-        myFrame.setVisible(true);
-        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        myFrame.setBounds(100, 100, 500, 400);
-        myFrame.setTitle("The Easy Restaurant");
-        myFrame.getContentPane().setLayout(null);
-
-        // Header
-        final JLabel hReqRes = new JLabel("Make a Reservation");
-        hReqRes.setBounds(144, 21, 132, 14);
-        myFrame.getContentPane().add(hReqRes);
-
-        //Creating Labels for the fields
-        JLabel hUsername = new JLabel("Username  :");
-        hUsername.setBounds(100, 51, 89, 14);
-        myFrame.getContentPane().add(hUsername);
-
-        JLabel hRestaurant = new JLabel("Restaurant  :");
-        hRestaurant.setBounds(100, 76, 89, 14);
-        myFrame.getContentPane().add(hRestaurant);
-
-        JLabel hDate = new JLabel("Date  :");
-        hDate.setBounds(100, 100, 89, 14);
-        myFrame.getContentPane().add(hDate);
-
-        JLabel hNumber_clients = new JLabel("Number of guests  :");
-        hNumber_clients.setBounds(100, 126, 120, 14);
-        myFrame.getContentPane().add(hNumber_clients);
-
-        JLabel hComments = new JLabel("Comments  :");
-        hComments.setBounds(100, 154, 89, 14);
-        myFrame.getContentPane().add(hComments);
-
-        //Creating TextFields
-
-        final TextField txtUsername = new TextField();
-        txtUsername.setBounds(207, 51, 200, 20);
-        myFrame.getContentPane().add(txtUsername);
-
-        final TextField txtRestaurant = new TextField();
-        txtRestaurant.setBounds(207, 76, 200, 20);
-        myFrame.getContentPane().add(txtRestaurant);
-
-        final TextField txtDate = new TextField();
-        txtDate.setBounds(207, 101, 200, 20);
-        myFrame.getContentPane().add(txtDate);
-
-        //For the number of clients creating a field which accepts only integer numbers as input.
-        NumberFormat format = NumberFormat.getInstance();
-        NumberFormatter formatter = new NumberFormatter(format);
-        formatter.setValueClass(Integer.class);
-        formatter.setMinimum(0);
-        formatter.setMaximum(Integer.MAX_VALUE);
-        formatter.setAllowsInvalid(false);
-        // If you want the value to be committed on each keystroke instead of focus lost
-        formatter.setCommitsOnValidEdit(true);
-        JFormattedTextField txtNumber_clients = new JFormattedTextField(formatter);
-        txtNumber_clients.setBounds(230, 127, 30, 20);
-        myFrame.getContentPane().add(txtNumber_clients);
-
-        final TextField txtComments = new TextField();
-        txtComments.setBounds(207, 153, 200, 60);
-        myFrame.getContentPane().add(txtComments);
-
-
-        // Variables
-        final String username = txtUsername.getText();
-        final String restaurant = txtRestaurant.getText();
-        final String date = txtDate.getText();
-        Object obj_number_clients;
-        obj_number_clients = txtNumber_clients.getValue();
-        final Integer number_clients = (Integer) obj_number_clients;
-        final String comments = txtComments.getText();
-
-
-        // Button SUBMIT , by pressing this button you make your reservation submitted.
-        JButton btnOK = new JButton("Submit");
-        btnOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                final boolean response = make_reservation(username, restaurant, date, number_clients, comments);
-                try {
-                    dispose();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-                System.out.println("Reservation is  " + response);
-                myFrame.dispose();
-                if (!response)negRespondMessage(); // depending on if the reservation is valid or not, the apprpriate message appears.
-                else posRespondMessage();
-            }
-
-        });
-        btnOK.setBounds(170, 300, 74, 23);
-        myFrame.getContentPane().add(btnOK);
-
-        //  Button CANCEL
-        JButton btnCancel = new JButton("Cancel");
-        btnCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0); // by pressing this button you exit from the program.
-                try {
-                    dispose();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-
-            }
-        });
-        btnCancel.setBounds(280, 300, 74, 23);
-        myFrame.getContentPane().add(btnCancel);
-
-
-    }
 
     static Boolean make_reservation(String username, String restaurant, String date, Integer number_clients, String comments) {
         InputStream in = null;
@@ -277,5 +238,7 @@ public class Reservation {
         myFrame2.getContentPane().add(btnOK);
 
     }
+
+
 
 }
