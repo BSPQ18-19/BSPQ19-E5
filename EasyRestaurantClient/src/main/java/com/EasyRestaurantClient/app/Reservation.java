@@ -3,9 +3,6 @@ package com.EasyRestaurantClient.app;
 
 import org.json.JSONObject;
 
-import java.awt.*;
-import java.awt.event.HierarchyEvent;
-import java.awt.event.HierarchyListener;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -13,12 +10,9 @@ import java.net.URL;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 
 import static com.sun.deploy.uitoolkit.ToolkitStore.dispose;
@@ -94,8 +88,18 @@ public class Reservation {
     }
 
     static public void main(String[] args) {
+
+
+//        System.out.println("Current Locale: " + Locale.getDefault());
+//        ResourceBundle mybundle = ResourceBundle.getBundle("Resource");
+
+        Locale greekLocale = new Locale("el","GR");
+       ResourceBundle bundle3 = ResourceBundle.getBundle("config.NIOVI", greekLocale);
+
+
+
         System.out.println("Hello World!");
-        JFrame frame = new JFrame("app");
+        JFrame frame = new JFrame("My Easy Restaurant");
         frame.setContentPane(new Reservation().reservationPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
