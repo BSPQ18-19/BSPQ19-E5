@@ -22,14 +22,15 @@ def register_api(request):
             new.save()
 
             Client.objects.create(user=new)
-            return JsonResponse("User created", safe=False)
+            return JsonResponse("User created", safe=False, status=200)
         else:
-            return JsonResponse("Username already exists", safe=False)
+            return JsonResponse("Username already exists", safe=False, status=403)
 
 @csrf_exempt
 def login_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
+        # print(User.objects.filter(username=data['username']).exists())
         if User.objects.filter(username=data['username']).exists():
             user = authenticate(username=data['username'], password=data['password'])
             try:
@@ -38,11 +39,11 @@ def login_api(request):
             except:
                 favs = []
             if user is not None:
-                return JsonResponse(favs, safe=False)
+                return JsonResponse(favs, status=200, safe=False)
             else:
-                return JsonResponse("Invalid credentials", safe=False)
+                return JsonResponse("Invalid credentials", status=403, safe=False)
         else:
-            return JsonResponse("Invalid user", safe=False)
+            return JsonResponse("Invalid user", status=403, safe=False)
 
 
 
@@ -71,7 +72,7 @@ def restaurants_api(request):
             c['schedule'] = restaurant.schedule
             c['type'] = restaurant.type
             restaurants.append(c)
-        return JsonResponse(restaurants, safe=False)
+        return JsonResponse(restaurants, safe=False, status=200)
 
 
 @csrf_exempt
@@ -83,9 +84,9 @@ def reservations_api(request):
             r = Reservation.objects.create(user=Client.objects.get(user=user), restaurant=Restaurant.objects.get(name=data['restaurant']),
                                        date=data['date'], number_clients=data['number_clients'], comments=data['comments'])
             r.restaurant.capacity -= r.number_clients
-            return JsonResponse("Reservation created", safe=False)
+            return JsonResponse("Reservation created", safe=False, status=200)
         else:
-            return JsonResponse("Wrong details", safe=False)
+            return JsonResponse("Wrong details", safe=False, status=403)
     elif request.method == 'GET':
         if User.objects.filter(username=request.GET['user']).exists():
             user = User.objects.get(username=request.GET['user'])
@@ -97,7 +98,7 @@ def reservations_api(request):
                 c['number_clients'] = reservation.number_clients
                 c['restaurant'] = reservation.restaurant.name
                 reservations.append(c)
-            return JsonResponse(reservations, safe=False)
+            return JsonResponse(reservations, safe=False, status=200)
         else:
-            return JsonResponse("User doesn't exist", safe=False)
+            return JsonResponse("User doesn't exist", safe=False, status=403)
 
