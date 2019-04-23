@@ -4,6 +4,7 @@
 *.ipr
 *.sqlite3
 .idea/
+EasyRestaurantClient/.idea/
 bin/
 out/
 log/
