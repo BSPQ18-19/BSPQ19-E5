@@ -1,9 +1,11 @@
 package com.EasyRestaurantClient.app;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.Test;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -16,7 +18,8 @@ public class RestaurantTest {
     @Test
     public void testRestaurants() {
         Restaurants restaurants = new Restaurants();
-        JSONArray jsonArray = restaurants.restaurant_list();
+        JSONObject filters = new JSONObject();
+        JSONArray jsonArray = restaurants.restaurant_list(filters);
         assertNotNull(jsonArray);
     }
 }

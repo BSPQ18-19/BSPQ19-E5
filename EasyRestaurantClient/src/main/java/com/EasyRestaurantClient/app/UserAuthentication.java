@@ -3,7 +3,11 @@ package com.EasyRestaurantClient.app;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.logging.Logger;
+
 import org.json.JSONObject;
+
+import javax.jws.soap.SOAPBinding;
 
 /**
  * Hello world!
@@ -11,12 +15,7 @@ import org.json.JSONObject;
  */
 public class UserAuthentication
 {
-
-    static public void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
-
+    private static Logger logger = Logger.getLogger(UserAuthentication.class.getName());
 
     /**
      * Tries to authenticate the user on the server
@@ -52,7 +51,7 @@ public class UserAuthentication
             out.close();
 
             int respCode = con.getResponseCode();
-            System.out.println("response code " + respCode);
+            logger.info("response code " + respCode);
 
 
             if (respCode == HttpURLConnection.HTTP_OK) {
@@ -66,25 +65,23 @@ public class UserAuthentication
                 reader.close();
                 in.close();
 
-
-                System.out.println("\nresponse content " + reply);
+                logger.info("response content " + reply);
 
 
                 if (!reply.toString().contains("Invalid")) {
-                    System.out.println("Correct");
                     resp = "Correct";
                 } else {
-                    System.out.println("Incorrect");
                     resp = "Incorrect";
                 }
+
             } else {
-                System.out.println("Bad conenction");
                 resp = "Bad connection";
             }
-                con.disconnect();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            logger.info(resp);
+            con.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return resp;
     }
 
@@ -126,8 +123,7 @@ public class UserAuthentication
             out.close();
 
             int respCode = con.getResponseCode();
-            System.out.println("response code " + respCode);
-
+            logger.info("response code " + respCode);
 
             if (respCode == HttpURLConnection.HTTP_OK) {
                 String line;
@@ -140,21 +136,18 @@ public class UserAuthentication
                 reader.close();
                 in.close();
 
-
-                System.out.println("\nresponse content " + reply);
+                logger.info("response content " + reply);
 
 
                 if (!reply.toString().contains("exists")) {
-                    System.out.println("User created");
                     resp = "User created";
                 } else {
-                    System.out.println("User already exists");
                     resp = "User already exists";
                 }
             } else {
-                System.out.println("Bad conenction");
                 resp = "Bad connection";
             }
+            logger.info(resp);
             con.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
