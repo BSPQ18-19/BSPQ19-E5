@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.EasyRestaurantClient.app.Reservation">
   <grid id="27dc6" binding="reservationPanel" layout-manager="GridLayoutManager" row-count="13" column-count="15" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+    <margin top="5" left="5" bottom="5" right="5"/>
     <constraints>
-      <xy x="26" y="60" width="804" height="415"/>
+      <xy x="97" y="138" width="684" height="358"/>
     </constraints>
     <properties>
       <autoscrolls value="true"/>
       <background color="-1"/>
       <enabled value="false"/>
-      <minimumSize width="300" height="400"/>
+      <minimumSize width="300" height="300"/>
       <opaque value="true"/>
     </properties>
     <clientProperties>
@@ -22,43 +22,15 @@
           <grid row="10" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="6a76c" class="javax.swing.JTextPane" default-binding="true">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="0" anchor="8" fill="0" indent="8" use-parent-layout="false">
-            <preferred-size width="100" height="30"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-1"/>
-          <disabledTextColor color="-16777216"/>
-          <editable value="false"/>
-          <enabled value="false"/>
-          <text value="Restaurant:"/>
-        </properties>
-      </component>
       <hspacer id="91749">
         <constraints>
           <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <component id="c28d7" class="javax.swing.JTextPane" binding="nameTextPane" default-binding="true">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="0" anchor="10" fill="0" indent="9" use-parent-layout="false">
-            <preferred-size width="100" height="30"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-1"/>
-          <disabledTextColor color="-16777216"/>
-          <editable value="false"/>
-          <enabled value="false"/>
-          <text value="Name : "/>
-        </properties>
-      </component>
       <component id="7938e" class="javax.swing.JTextField" binding="NameInput">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="100" height="-1"/>
+          <grid row="2" column="2" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
@@ -67,11 +39,13 @@
       </component>
       <component id="a82ad" class="javax.swing.JTextField" binding="RestaurantInput">
         <constraints>
-          <grid row="3" column="2" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="3" column="2" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="c235" class="javax.swing.JTextArea" binding="dayTextArea" default-binding="true">
         <constraints>
@@ -82,7 +56,7 @@
         <properties>
           <disabledTextColor color="-16777216"/>
           <enabled value="false"/>
-          <text value="Day"/>
+          <text resource-bundle="Resource" key="Day"/>
         </properties>
       </component>
       <component id="a89a5" class="javax.swing.JComboBox" binding="DayInput">
@@ -135,7 +109,7 @@
         <properties>
           <disabledTextColor color="-16777216"/>
           <enabled value="false"/>
-          <text value="Month"/>
+          <text resource-bundle="Resource" key="Month"/>
         </properties>
       </component>
       <component id="c136f" class="javax.swing.JComboBox" binding="MonthInput">
@@ -168,7 +142,7 @@
         <properties>
           <disabledTextColor color="-16777216"/>
           <enabled value="false"/>
-          <text value="Year"/>
+          <text resource-bundle="Resource" key="Year"/>
         </properties>
       </component>
       <component id="1813f" class="javax.swing.JComboBox" binding="YearInput">
@@ -193,7 +167,7 @@
           <disabledTextColor color="-16777216"/>
           <editable value="false"/>
           <enabled value="false"/>
-          <text value="DATE"/>
+          <text resource-bundle="Resource" key="Date"/>
         </properties>
       </component>
       <component id="4fbae" class="javax.swing.JTextPane" default-binding="true">
@@ -232,7 +206,7 @@
           <disabledTextColor color="-16777216"/>
           <editable value="false"/>
           <enabled value="false"/>
-          <text value="TIME"/>
+          <text resource-bundle="Resource" key="Time"/>
         </properties>
       </component>
       <component id="3bd68" class="javax.swing.JComboBox" binding="HourInput">
@@ -285,7 +259,7 @@
           <inheritsPopupMenu value="false"/>
           <multiClickThreshhold value="1"/>
           <opaque value="true"/>
-          <text value="Cancel"/>
+          <text resource-bundle="Resource" key="cancelButtonM"/>
         </properties>
       </component>
       <component id="fb4ef" class="javax.swing.JButton" binding="OKButton" default-binding="true">
@@ -341,12 +315,12 @@
           <disabledTextColor color="-16777216"/>
           <editable value="false"/>
           <enabled value="false"/>
-          <text value="Comments about your reservation : "/>
+          <text resource-bundle="Resource" key="makeyouRes"/>
         </properties>
       </component>
       <component id="7c22c" class="javax.swing.JTextField" binding="CommentInput">
         <constraints>
-          <grid row="8" column="2" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="8" column="2" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="10"/>
           </grid>
         </constraints>
@@ -363,7 +337,35 @@
           <disabledTextColor color="-16777216"/>
           <editable value="false"/>
           <enabled value="false"/>
-          <text value="Number of guests :"/>
+          <text resource-bundle="Resource" key="numOfGuests"/>
+        </properties>
+      </component>
+      <component id="6a76c" class="javax.swing.JTextPane" default-binding="true">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="6" fill="0" indent="8" use-parent-layout="false">
+            <preferred-size width="100" height="30"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <disabledTextColor color="-16777216"/>
+          <editable value="false"/>
+          <enabled value="false"/>
+          <text resource-bundle="Resource" key="Restname"/>
+        </properties>
+      </component>
+      <component id="76c48" class="javax.swing.JTextPane" default-binding="true">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="6" fill="0" indent="8" use-parent-layout="false">
+            <preferred-size width="100" height="30"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <disabledTextColor color="-16777216"/>
+          <editable value="false"/>
+          <enabled value="false"/>
+          <text resource-bundle="Resource" key="Name"/>
         </properties>
       </component>
     </children>

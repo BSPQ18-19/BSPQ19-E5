@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.EasyRestaurantClient.app.ChooseLang">
+  <grid id="27dc6" binding="ChooseLang" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="true" same-size-vertically="true" hgap="-1" vgap="-1">
+    <margin top="5" left="5" bottom="5" right="5"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+      <preferredSize width="500" height="200"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="13afc" class="javax.swing.JRadioButton" binding="englishRadioButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <nextFocusableComponent value="38449"/>
+          <selected value="false"/>
+          <text value="English"/>
+        </properties>
+      </component>
+      <component id="96a3a" class="javax.swing.JRadioButton" binding="greekRadioButton">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <nextFocusableComponent value="38449"/>
+          <text value="Ελληνικά"/>
+        </properties>
+      </component>
+      <component id="48693" class="javax.swing.JFormattedTextField" binding="pleaseChooseTheLanguageFormattedTextField" default-binding="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="450" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <disabledTextColor color="-16777216"/>
+          <editable value="false"/>
+          <enabled value="false"/>
+          <horizontalAlignment value="4"/>
+          <text value="Please Choose the language you prefer. Παρακαλώ επιλέξτε την γλώσσα της επιλογής σας."/>
+        </properties>
+      </component>
+      <component id="38449" class="javax.swing.JButton" binding="ΟΚButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <multiClickThreshhold value="1"/>
+          <text value="ΟΚ"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="buttonGroup1">
+      <member id="13afc"/>
+      <member id="96a3a"/>
+    </group>
+  </buttonGroups>
+</form>

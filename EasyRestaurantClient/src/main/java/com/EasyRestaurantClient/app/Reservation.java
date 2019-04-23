@@ -16,14 +16,12 @@ import java.util.ResourceBundle;
 
 
 import static com.sun.deploy.uitoolkit.ToolkitStore.dispose;
-
 public class Reservation {
     final static String DATE_FORMAT = "yyyy-MM-dd";
 
     private JPanel reservationPanel;
     private JButton cancelButton;
     private JButton OKButton;
-    private JTextPane nameTextPane;
     private JTextField NameInput;
     private JTextArea dayTextArea;
     private JComboBox YearInput;
@@ -37,6 +35,15 @@ public class Reservation {
     private JTextPane numofguests;
 
 
+    private static int language;
+    public int getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(int language) {
+        this.language = language;
+    }
+
     public Reservation() {
 
 
@@ -48,25 +55,25 @@ public class Reservation {
 
 
 
-                    //check if date has a correct form
+                //check if date has a correct form
 
 
-                    String date = YearInput.getSelectedItem().toString()+"-"+MonthInput.getSelectedItem().toString()+"-"+DayInput.getSelectedItem().toString();
-                    String daytime = date+" "+HourInput.getSelectedItem().toString()+":"+MinuteInput.getSelectedItem().toString();
-                    System.out.println(daytime);
-                    String str_number_clients = (GuestsInput.getSelectedItem().toString());
-                    int number_clients = Integer.parseInt(str_number_clients);
-                    final boolean response = make_reservation(NameInput.getText(), RestaurantInput.getText(),daytime, number_clients, CommentInput.getText());
+                String date = YearInput.getSelectedItem().toString()+"-"+MonthInput.getSelectedItem().toString()+"-"+DayInput.getSelectedItem().toString();
+                String daytime = date+" "+HourInput.getSelectedItem().toString()+":"+MinuteInput.getSelectedItem().toString();
+                System.out.println(daytime);
+                String str_number_clients = (GuestsInput.getSelectedItem().toString());
+                int number_clients = Integer.parseInt(str_number_clients);
+                final boolean response = make_reservation(NameInput.getText(), RestaurantInput.getText(),daytime, number_clients, CommentInput.getText());
 
-                    try {
-                        dispose();
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
-                    System.out.println("Reservation is  " + response);
-                    reservationPanel.disable();
-                    if (!response)negRespondMessage(); // depending on if the reservation is valid or not, the apprpriate message appears.
-                    else posRespondMessage();
+                try {
+                    dispose();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                System.out.println("Reservation is  " + response);
+                reservationPanel.disable();
+                if (!response)negRespondMessage(); // depending on if the reservation is valid or not, the apprpriate message appears.
+                else posRespondMessage();
 
             }
         });
@@ -89,22 +96,7 @@ public class Reservation {
 
     static public void main(String[] args) {
 
-
-//        System.out.println("Current Locale: " + Locale.getDefault());
-//        ResourceBundle mybundle = ResourceBundle.getBundle("Resource");
-
-        Locale greekLocale = new Locale("el","GR");
-       ResourceBundle bundle3 = ResourceBundle.getBundle("config.NIOVI", greekLocale);
-
-
-
-        System.out.println("Hello World!");
-        JFrame frame = new JFrame("My Easy Restaurant");
-        frame.setContentPane(new Reservation().reservationPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-
+        makeResInterface();
 
 
     }
@@ -181,7 +173,20 @@ public class Reservation {
         return response;
     }
 
+    public static void makeResInterface(){
+        Locale englishLocale = new Locale("en_US");
+        Locale greekLocale = new Locale("el_GR");
+        if (language==0) Locale.setDefault(englishLocale);
+        else Locale.setDefault(greekLocale);
 
+        JFrame frame = new JFrame("My Easy Restaurant");
+        frame.setContentPane(new Reservation().reservationPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+
+
+    }
     public static void negRespondMessage() {
         JFrame myFrame2 = new JFrame();
 
@@ -219,7 +224,7 @@ public class Reservation {
         myFrame2.setVisible(true);
         myFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame2.setBounds(100, 100, 500, 400);
-        myFrame2.setTitle("The Easy Restaurant");
+        myFrame2.setTitle("My Easy Restaurant");
         myFrame2.getContentPane().setLayout(null);
 
         JLabel hFail = new JLabel("Your reservation has been made. Thank you !");
