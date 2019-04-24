@@ -75,7 +75,7 @@ public class UserAuthentication
                 }
 
             } else {
-                resp = "Bad connection";
+                resp = "Incorrect";
             }
             logger.info(resp);
             con.disconnect();
@@ -144,6 +144,8 @@ public class UserAuthentication
                 } else {
                     resp = "User already exists";
                 }
+            } else if (respCode == 403){
+                resp = "User already exists";
             } else {
                 resp = "Bad connection";
             }
@@ -151,6 +153,7 @@ public class UserAuthentication
             con.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
+            resp = "Bad connection";
         }
         return resp;
     }

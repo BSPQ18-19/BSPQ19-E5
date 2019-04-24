@@ -47,17 +47,10 @@ public class Reservation {
     public Reservation() {
 
 
-
-
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-
                 //check if date has a correct form
-
-
                 String date = YearInput.getSelectedItem().toString()+"-"+MonthInput.getSelectedItem().toString()+"-"+DayInput.getSelectedItem().toString();
                 String daytime = date+" "+HourInput.getSelectedItem().toString()+":"+MinuteInput.getSelectedItem().toString();
                 System.out.println(daytime);
