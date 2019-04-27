@@ -15,7 +15,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 
-import static com.sun.deploy.uitoolkit.ToolkitStore.dispose;
 public class Reservation {
     final static String DATE_FORMAT = "yyyy-MM-dd";
 
@@ -33,6 +32,7 @@ public class Reservation {
     private JComboBox MinuteInput;
     private JComboBox GuestsInput;
     private JTextPane numofguests;
+    private JFrame frame;
 
 
     private static int language;
@@ -59,7 +59,7 @@ public class Reservation {
                 final boolean response = make_reservation(NameInput.getText(), RestaurantInput.getText(),daytime, number_clients, CommentInput.getText());
 
                 try {
-                    dispose();
+                    frame.dispose();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -75,7 +75,7 @@ public class Reservation {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0); // by pressing this button you exit from the program.
                 try {
-                    dispose();
+                    frame.dispose();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -105,8 +105,6 @@ public class Reservation {
      * @param comments       Comments in case there were any
      * @return True if it is correct
      */
-
-
     static Boolean make_reservation(String username, String restaurant, String date, Integer number_clients, String comments) {
         InputStream in = null;
         OutputStream out = null;
@@ -173,7 +171,9 @@ public class Reservation {
         else Locale.setDefault(greekLocale);
 
         JFrame frame = new JFrame("My Easy Restaurant");
-        frame.setContentPane(new Reservation().reservationPanel);
+        Reservation reservation = new Reservation();
+        reservation.frame = frame;
+        frame.setContentPane(reservation.reservationPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -181,7 +181,7 @@ public class Reservation {
 
     }
     public static void negRespondMessage() {
-        JFrame myFrame2 = new JFrame();
+        final JFrame myFrame2 = new JFrame();
 
         myFrame2.setVisible(true);
         myFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -198,7 +198,7 @@ public class Reservation {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
                 try {
-                    dispose();
+                    myFrame2.dispose();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -212,7 +212,7 @@ public class Reservation {
 
 
     public static void posRespondMessage() {
-        JFrame myFrame2 = new JFrame();
+        final JFrame myFrame2 = new JFrame();
 
         myFrame2.setVisible(true);
         myFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -229,7 +229,7 @@ public class Reservation {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
                 try {
-                    dispose();
+                    myFrame2.dispose();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
