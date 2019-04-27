@@ -24,6 +24,7 @@ public class Authentication {
 
 
     public Authentication() {
+
         ComboItem item1 = new ComboItem("English", "Language1");
         ComboItem item2 = new ComboItem("Greek", "Language2");
         comboBox1.addItem(item1);

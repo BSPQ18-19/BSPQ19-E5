@@ -19,7 +19,7 @@ public class Restaurants {
         JSONObject filters = new JSONObject();
         filters.put("type", "Grill");
 //        filters.put("user", "carlos");
-//        JSONArray list = restaurants.restaurant_list(filters);
+        JSONArray list = restaurants.restaurant_list(filters);
 /*
         for (int i=0;i<list.length();i++) {
             JSONObject explrObject = list.getJSONObject(i);
