@@ -53,6 +53,11 @@ public class Authentication {
                 UserAuthentication userAuthentication = new UserAuthentication();
                 String result = userAuthentication.login(login_username.getText(), login_pass.getText());
                 response.setText(result);
+                if (result.equals("Correct")){
+                    frame.dispose();
+                    Consult frame = new Consult();
+                    frame.setVisible(true);
+                }
             }
         });
         comboBox1.addActionListener(new ActionListener() {
