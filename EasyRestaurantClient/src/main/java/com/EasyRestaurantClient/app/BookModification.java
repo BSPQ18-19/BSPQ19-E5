@@ -1,4 +1,4 @@
-package IU;
+package com.EasyRestaurantClient.app;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;

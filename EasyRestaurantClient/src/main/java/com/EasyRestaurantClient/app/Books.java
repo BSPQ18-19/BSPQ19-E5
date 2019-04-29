@@ -8,7 +8,6 @@ import java.awt.Font;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
@@ -79,10 +78,7 @@ public class Books extends JPanel {
 		});
 		btnDelete.setBounds(363, 260, 97, 25);
 		add(btnDelete);
-		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(335, 187, 105, 22);
-		add(dateChooser);
+
 		
 		Panel panel = new Panel();
 		panel.setBounds(32, 52, 180, 261);

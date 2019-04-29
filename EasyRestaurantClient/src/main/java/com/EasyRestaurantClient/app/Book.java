@@ -1,5 +1,5 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
+package com.EasyRestaurantClient.app;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -7,11 +7,9 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Book extends JPanel {
 
@@ -34,19 +32,19 @@ public class Book extends JPanel {
 		JLabel lblRestaurantName = new JLabel("Restaurant name");
 		lblRestaurantName.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblRestaurantName.setBounds(289, 142, 246, 20);
-		lblRestaurantName.add(reservation.getString("restaurant"));
+		lblRestaurantName.setText(reservation.getString("restaurant"));
 		add(lblRestaurantName);
 		
 		JLabel lblLocation = new JLabel("Location");
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblLocation.setBounds(289, 255, 246, 20);
-		lblLocation.add(reservation.getString("localization"));
+		lblLocation.setText(reservation.getString("localization"));
 		add(lblLocation);
 		
 		JLabel lblDate = new JLabel("Date");
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDate.setBounds(289, 366, 246, 20);
-		lblDate.add(reservation.getString("date"));
+		lblDate.setText(reservation.getString("date"));
 		add(lblDate);
 		
 		JButton btnModify = new JButton("Modify");
@@ -67,13 +65,14 @@ public class Book extends JPanel {
 		add(btnDelete);
 
 	}
-	public void getBook() {
+	public JSONObject getBook() {
 		//need to be added the search reservation code
-		JSONArray jasonArray;//this is the array of reservations
-		for (int i=0;i<list.length();i++) {
-            JSONObject reservation = list.getJSONObject(i);
-        }
-	        
-	    
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("number_clients", 3);
+		jsonObject.put("date", "2019-04-12T23:00:00Z");
+		jsonObject.put("restaurant", "Txacoli");
+
+
+		return jsonObject;
 	}
 }

@@ -10,11 +10,9 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.Color;
-import com.toedter.calendar.JCalendar;
 import java.awt.Panel;
 import java.awt.BorderLayout;
 import java.awt.List;
-import com.toedter.calendar.JDateChooser;
 
 public class Favourites extends JPanel {
 	private JTextField textField;
@@ -130,9 +128,6 @@ public class Favourites extends JPanel {
 		
 		List list = new List();
 		panel.add(list, BorderLayout.CENTER);
-		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(309, 205, 105, 22);
-		add(dateChooser);
+
 	}
 }

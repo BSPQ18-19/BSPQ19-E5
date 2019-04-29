@@ -1,3 +1,4 @@
+package com.EasyRestaurantClient.app;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -9,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.Font;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 public class Restaurant extends JPanel {
 	private JTextField txtNamefield;
 	private JTextField txtLocationfield;
