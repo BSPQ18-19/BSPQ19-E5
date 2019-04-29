@@ -2,20 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f904f4a7-7858-42e1-ad0a-966bddec3460" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/EasyRestaurantClient.iml" afterPath="$PROJECT_DIR$/EasyRestaurantClient.iml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.form" afterPath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.form" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.java" afterPath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/NIOVI.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource.properties" afterPath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource.properties" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Book.java" afterPath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Book.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Restaurant.java" afterPath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Restaurant.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_el_GR.properties" afterPath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_el_GR.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_en_US.properties" afterPath="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_en_US.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$1.class" afterPath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$2.class" afterPath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$2.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$3.class" afterPath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$3.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$4.class" afterPath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$4.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation.class" afterPath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Resource.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Resource_el_GR.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Resource_en_US.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Authentication$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Authentication$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Authentication.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/ChooseLang$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/ChooseLang$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/ChooseLang$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/ChooseLang.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Restaurants.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/UserAuthentication.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,36 +36,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Reservation.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Reservation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="21" column="36" lean-forward="false" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+            <state relative-caret-position="-103">
+              <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#989#990#0" expanded="true" />
-                <element signature="e#1020#1021#0" expanded="true" />
-                <element signature="e#1065#1066#0" expanded="true" />
-                <element signature="e#1105#1106#0" expanded="true" />
-                <element signature="docComment;method#make_reservation#0;class#Reservation#0" expanded="false" />
-                <element signature="method#make_reservation#0;class#Reservation#0" expanded="false" />
-                <element signature="method#negRespondMessage#0;class#Reservation#0" expanded="false" />
                 <element signature="method#posRespondMessage#0;class#Reservation#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChooseLang.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/ChooseLang.java">
+      <file leaf-file-name="Resource.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#442#443#0" expanded="true" />
-                <element signature="e#469#470#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="289">
+              <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,8 +62,86 @@
       <file leaf-file-name="Resource_el_GR.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_el_GR.properties">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComboItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/ComboItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserAuthentication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/UserAuthentication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1330">
+              <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Restaurant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Restaurant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3192#3304#0" expanded="true" />
+                <element signature="e#3303#3304#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BookModification.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/BookModification.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-497">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Restaurants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Restaurants.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="12" selection-end-column="15" />
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Book.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Resource_en_US.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_en_US.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -114,9 +190,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_en_US.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_el_GR.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/ChooseLang.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_el_GR.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Restaurant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Book.java" />
       </list>
     </option>
   </component>
@@ -135,6 +213,22 @@
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="735" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -156,23 +250,6 @@
     <panes>
       <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="EasyRestaurantClient" type="58d84e3e:PackageViewProjectNode" />
-              <item name="EasyRestaurantClient" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="EasyRestaurantClient" type="58d84e3e:PackageViewProjectNode" />
-              <item name="EasyRestaurantClient" type="616d4139:PackageViewModuleNode" />
-              <item name="com.EasyRestaurantClient.app" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,7 +299,34 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="EasyRestaurantClient" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Reservation" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="EasyRestaurantClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EasyRestaurantClient" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="EasyRestaurantClient" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="EasyRestaurantClient" type="58d84e3e:PackageViewProjectNode" />
+              <item name="EasyRestaurantClient" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="EasyRestaurantClient" type="58d84e3e:PackageViewProjectNode" />
+              <item name="EasyRestaurantClient" type="616d4139:PackageViewModuleNode" />
+              <item name="com.EasyRestaurantClient.app" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -232,10 +336,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="xslt.associations" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE" value="right" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="355" />
@@ -276,7 +380,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ChooseLang">
+  <component name="RunManager" selected="Application.Reservation">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="WIDTH" value="0" />
@@ -449,8 +553,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.ChooseLang" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Reservation" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Reservation" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ChooseLang" />
         <item index="2" class="java.lang.String" itemvalue="Application.Application (1)" />
         <item index="3" class="java.lang.String" itemvalue="Application.Application" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.ReservationTest" />
@@ -495,31 +599,32 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="620" y="72" width="136" height="584" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3120915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2630719" sideWeight="0.5075643" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.01633987" sideWeight="0.4924357" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.01633987" sideWeight="0.4924357" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22314675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22919819" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10784314" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32352942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -560,16 +665,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.java</url>
-          <line>96</line>
-          <properties class="com.EasyRestaurantClient.app.Reservation" method="main">
+          <line>89</line>
+          <properties>
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.java</url>
-          <line>189</line>
-          <properties class="com.EasyRestaurantClient.app.Reservation" method="negRespondMessage">
+          <line>182</line>
+          <properties class="com.EasyRestaurantClient.app.Reservation">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="4" />
@@ -579,58 +684,20 @@
     </breakpoint-manager>
     <watches-manager />
   </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="EasyRestaurantClient" type="b2602c69:ProjectViewProjectNode" />
+        <item name="EasyRestaurantClient" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#989#990#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="docComment;method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#negRespondMessage#0;class#Reservation#0" expanded="false" />
-            <element signature="method#posRespondMessage#0;class#Reservation#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="86" column="23" lean-forward="false" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/UserAuthentication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="93" column="52" lean-forward="true" selection-start-line="93" selection-start-column="52" selection-end-line="93" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#989#990#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="docComment;method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#negRespondMessage#0;class#Reservation#0" expanded="false" />
-            <element signature="method#posRespondMessage#0;class#Reservation#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -652,13 +719,6 @@
           <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#989#990#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="docComment;method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#negRespondMessage#0;class#Reservation#0" expanded="false" />
             <element signature="method#posRespondMessage#0;class#Reservation#0" expanded="false" />
           </folding>
         </state>
@@ -691,13 +751,6 @@
           <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#989#990#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="docComment;method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#negRespondMessage#0;class#Reservation#0" expanded="false" />
             <element signature="method#posRespondMessage#0;class#Reservation#0" expanded="false" />
           </folding>
         </state>
@@ -794,13 +847,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/el_GR.properties" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/EasyRestaurantClient/app/RBundle.java" />
-    <entry file="file://$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/Reservation.class" />
     <entry file="file://$PROJECT_DIR$/target/classes/com/EasyRestaurantClient/app/NIOVI.properties" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/util/ResourceBundle.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -825,37 +872,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/UserAuthentication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-867">
-          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Restaurants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_en_US.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/ChooseLang.form">
@@ -863,40 +882,105 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/ChooseLang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_en_US.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/config/Resource_el_GR.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="12" selection-end-column="15" />
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/ComboItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/BookModification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-497">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/UserAuthentication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1330">
+          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Restaurants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3192#3304#0" expanded="true" />
+            <element signature="e#3303#3304#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/Reservation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="21" column="36" lean-forward="false" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+        <state relative-caret-position="-103">
+          <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#989#990#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="docComment;method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#make_reservation#0;class#Reservation#0" expanded="false" />
-            <element signature="method#negRespondMessage#0;class#Reservation#0" expanded="false" />
             <element signature="method#posRespondMessage#0;class#Reservation#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/EasyRestaurantClient/app/ChooseLang.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#442#443#0" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,4 +1,3 @@
-package IU;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -8,8 +7,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
-import org.json.simple.JSONObject;
-
+import org.json.JSONArray;
+import org.json.JSONObject;
 public class Restaurant extends JPanel {
 	private JTextField txtNamefield;
 	private JTextField txtLocationfield;
