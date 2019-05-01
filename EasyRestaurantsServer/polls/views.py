@@ -8,8 +8,10 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 from polls.forms import *
+from silk.profiling.profiler import silk_profile
 
 @csrf_exempt
+@silk_profile(name='Registration')
 def register_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
@@ -26,7 +28,9 @@ def register_api(request):
         else:
             return JsonResponse("Username already exists", safe=False, status=403)
 
+
 @csrf_exempt
+@silk_profile(name='Login')
 def login_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
@@ -50,6 +54,7 @@ def login_api(request):
 
 #Used for both getting favourites restaurants of a user or filtering all restaurants
 @csrf_exempt
+@silk_profile(name='Restaurants')
 def restaurants_api(request):
     if request.method == 'GET':
         try:
@@ -76,12 +81,13 @@ def restaurants_api(request):
 
 
 @csrf_exempt
+@silk_profile(name='Reservations')
 def reservations_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
         if User.objects.filter(username=data['user']).exists() and Restaurant.objects.filter(name=data['restaurant']).exists():
-            user = User.objects.filter(username=data['user'])
-            r = Reservation.objects.create(user=Client.objects.get(user=user), restaurant=Restaurant.objects.get(name=data['restaurant']),
+            user = User.objects.get(username=data['user'])
+            r = Reservation.objects.create(user=Client.objects.all().get(user=user), restaurant=Restaurant.objects.get(name=data['restaurant']),
                                        date=data['date'], number_clients=data['number_clients'], comments=data['comments'])
             r.restaurant.capacity -= r.number_clients
             return JsonResponse("Reservation created", safe=False, status=200)

@@ -108,7 +108,7 @@ public class Reservation {
     static Boolean make_reservation(String username, String restaurant, String date, Integer number_clients, String comments) {
         InputStream in = null;
         OutputStream out = null;
-        Boolean response = false;
+        Boolean response = true;
         String reply = "";
 
 
@@ -160,6 +160,7 @@ public class Reservation {
             con.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
         return response;
     }

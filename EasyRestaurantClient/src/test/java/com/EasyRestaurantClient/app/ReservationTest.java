@@ -23,7 +23,7 @@ public class ReservationTest {
     @Rule
     public ContiPerfRule i = new ContiPerfRule();
     @Test
-    @Required(max=500)
+    @Required(max=10000)
     public void testReservation() throws ParseException {
         String date = "2019-05-18 20:45";
         assertTrue(Reservation.make_reservation("carlos", "Txacoli", date, 4, "Gluten allergic"));

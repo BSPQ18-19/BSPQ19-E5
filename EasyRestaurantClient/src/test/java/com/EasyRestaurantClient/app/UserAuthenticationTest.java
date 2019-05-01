@@ -21,8 +21,8 @@ public class UserAuthenticationTest
     @Rule
     public ContiPerfRule i = new ContiPerfRule();
     @Test
-    @PerfTest(invocations = 100, threads = 5)
-    @Required(max=500, median = 250)
+    @PerfTest(invocations = 50, threads = 2)
+    @Required(max=11000, median = 4500)
     public void loginTest(){
         UserAuthentication userAuthentication = new UserAuthentication();
         String result = userAuthentication.login("as","as");
@@ -38,7 +38,7 @@ public class UserAuthenticationTest
      */
     @Test
     @PerfTest(invocations = 10, threads = 10)
-    @Required(max = 200, median=150)
+    @Required(max = 11000, median=4500)
     public void registerRest(){
         UserAuthentication userAuthentication = new UserAuthentication();
 

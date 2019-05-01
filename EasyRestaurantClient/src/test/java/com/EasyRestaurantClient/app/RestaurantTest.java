@@ -24,7 +24,7 @@ public class RestaurantTest {
     public ContiPerfRule i = new ContiPerfRule();
     @Test
     @PerfTest(invocations = 20, threads = 5)
-    @Required(max=500, median = 250)
+    @Required(max=10000, median = 2500)
     public void testRestaurants() {
         Restaurants restaurants = new Restaurants();
         JSONObject filters = new JSONObject();

@@ -23,7 +23,7 @@ public class Favourites extends JPanel {
 	 * Create the panel.
 	 */
 	public Favourites() {
-		setBackground(Color.DARK_GRAY);
+//		setBackground(Color.DARK_GRAY);
 		initialize();
 	}
 	
@@ -32,8 +32,8 @@ public class Favourites extends JPanel {
 		
 		JLabel lblListOfFavourites = new JLabel("List of favourites:");
 		lblListOfFavourites.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblListOfFavourites.setForeground(Color.WHITE);
-		lblListOfFavourites.setBackground(Color.WHITE);
+//		lblListOfFavourites.setForeground(Color.WHITE);
+//		lblListOfFavourites.setBackground(Color.WHITE);
 		lblListOfFavourites.setBounds(26, 30, 119, 16);
 		add(lblListOfFavourites);
 		
@@ -64,19 +64,19 @@ public class Favourites extends JPanel {
 		
 		JLabel lblNmae = new JLabel("Name:");
 		lblNmae.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNmae.setForeground(Color.WHITE);
+//		lblNmae.setForeground(Color.WHITE);
 		lblNmae.setBounds(209, 30, 56, 16);
 		add(lblNmae);
 		
 		JLabel lblLocation = new JLabel("Location:");
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblLocation.setForeground(Color.WHITE);
+//		lblLocation.setForeground(Color.WHITE);
 		lblLocation.setBounds(209, 65, 70, 16);
 		add(lblLocation);
 		
 		JLabel lblSpeciality = new JLabel("Speciality:");
 		lblSpeciality.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSpeciality.setForeground(Color.WHITE);
+//		lblSpeciality.setForeground(Color.WHITE);
 		lblSpeciality.setBounds(209, 100, 70, 16);
 		add(lblSpeciality);
 		
@@ -92,7 +92,7 @@ public class Favourites extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("Type:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel.setForeground(Color.WHITE);
+//		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(209, 135, 56, 16);
 		add(lblNewLabel);
 		
@@ -106,13 +106,13 @@ public class Favourites extends JPanel {
 		
 		JLabel lblScore = new JLabel("Score:");
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblScore.setForeground(Color.WHITE);
+//		lblScore.setForeground(Color.WHITE);
 		lblScore.setBounds(209, 170, 56, 16);
 		add(lblScore);
 		
 		JLabel lblSchedule = new JLabel("Schedule:");
 		lblSchedule.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSchedule.setForeground(Color.WHITE);
+//		lblSchedule.setForeground(Color.WHITE);
 		lblSchedule.setBounds(209, 205, 70, 16);
 		add(lblSchedule);
 		

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'coverage',
+    'silk',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'silk.middleware.SilkyMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -115,6 +117,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+SILKY_PYTHON_PROFILER = True
+
+SILKY_PYTHON_PROFILER_BINARY = True
+
+SILKY_PYTHON_PROFILER_RESULT_PATH = 'D:\Deusto\Cuarto\SPQ\BSPQ19-E5\EasyRestaurantsServer\profiles'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

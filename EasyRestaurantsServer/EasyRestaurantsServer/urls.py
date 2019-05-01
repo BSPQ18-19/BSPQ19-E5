@@ -1,5 +1,7 @@
 from django.conf.urls import url
 from django.contrib import admin
+from django.urls import include
+
 from polls import views
 
 urlpatterns = [
@@ -9,3 +11,4 @@ urlpatterns = [
     url(r'^restaurants/', views.restaurants_api, name="restaurant"),
     url(r'^reservations/', views.reservations_api, name="reservation"),
 ]
+urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]

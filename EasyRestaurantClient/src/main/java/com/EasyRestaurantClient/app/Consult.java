@@ -44,11 +44,12 @@ public class Consult extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
+
+		Restaurant r = new Restaurant();
 		Favourites f = new Favourites();
 		Books b= new Books();
 		pestañas = new JTabbedPane(JTabbedPane.TOP);
-		pestañas.add("Restaurants", new JPanel());
+		pestañas.add("Restaurants", r);
 		pestañas.add("Favourites", f);
 		pestañas.add("Books", b);
 		contentPane.add(pestañas, BorderLayout.CENTER);
