@@ -9,6 +9,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 from polls.forms import *
 from silk.profiling.profiler import silk_profile
+from datetime import datetime
 
 @csrf_exempt
 @silk_profile(name='Registration')
@@ -108,3 +109,31 @@ def reservations_api(request):
         else:
             return JsonResponse("User doesn't exist", safe=False, status=403)
 
+
+
+#Used for both getting favourites restaurants of a user or filtering all restaurants
+@csrf_exempt
+@silk_profile(name='Reviews')
+def reviews_api(request):
+    if request.method == 'GET':
+        try:
+            restaurant = Restaurant.objects.all().get(name=str(request.GET['restaurant']))
+            reviews = Review.objects.all().filter(restaurant=restaurant)
+        except:
+            return JsonResponse("Restaurant doesn't exist", safe=False, status=403)
+        r = []
+        for review in reviews:
+            c = {}
+            c['date'] = review.date
+            c['comments'] = review.comments
+            c['score'] = review.score
+            r.append(c)
+        return JsonResponse(r, safe=False, status=200)
+    else:
+        data = JSONParser().parse(request)
+        try:
+            new = Review.objects.create(date=datetime.now(), comments=data['comments'], score=data['score'],
+                                        restaurant=Restaurant.objects.get(name=data['restaurant']))
+            return JsonResponse("Created", safe=False, status=200)
+        except:
+            return JsonResponse("Incorrect data", safe=False, status=403)

@@ -34,3 +34,12 @@ class Reservation(models.Model):
 
     def __str__(self):
         return str(self.date)
+
+class Review(models.Model):
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    score = models.FloatField()
+    comments = models.CharField(max_length=200)
+    date = models.DateTimeField(blank=True)
+
+    def __str__(self):
+        return str(self.date)
