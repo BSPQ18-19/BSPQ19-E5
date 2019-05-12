@@ -12,6 +12,7 @@ public class Consult extends JFrame {
 
 	private JPanel contentPane;
 	private JTabbedPane pestañas;
+	private String user;
 
 	/**
 	 * Launch the application.
@@ -20,7 +21,7 @@ public class Consult extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Consult frame = new Consult();
+					Consult frame = new Consult("carlos");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +33,8 @@ public class Consult extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Consult() {
+	public Consult(String user) {
+		this.user = user;
 		initialize();
 	}
 	
@@ -44,10 +46,9 @@ public class Consult extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-
 		Restaurant r = new Restaurant();
-		Favourites f = new Favourites();
-		Books b= new Books();
+		Favourites f = new Favourites(user);
+		Books b= new Books(user);
 		pestañas = new JTabbedPane(JTabbedPane.TOP);
 		pestañas.add("Restaurants", r);
 		pestañas.add("Favourites", f);

@@ -1,34 +1,38 @@
 package com.EasyRestaurantClient.app;
 
-import java.awt.Color;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+import javax.swing.*;
 import java.awt.Font;
-import javax.swing.JList;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
-import java.awt.List;
 import java.awt.BorderLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Books extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField restaurant_field;
+	private JTextField number_field;
+	private String user;
 
 	/**
 	 * Create the panel.
 	 */
-	public Books() {
+	public Books(String user) {
 //		setBackground(Color.DARK_GRAY);
+		this.user = user;
 		initialize();
 	}
 	
 	public void initialize() {
 		setLayout(null);
-		
+		JSONObject filters = new JSONObject();
+		filters.put("user", user);
+		Reservations reservations = new Reservations();
+		final JSONArray reservations_list = reservations.reservation_list(filters);
+
 		JLabel lblListOfBooks = new JLabel("List of Books:");
 		lblListOfBooks.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblListOfBooks.setForeground(Color.WHITE);
@@ -41,21 +45,21 @@ public class Books extends JPanel {
 		lblName.setBounds(234, 70, 89, 16);
 		add(lblName);
 		
-		textField = new JTextField();
-		textField.setBounds(335, 68, 116, 22);
-		add(textField);
-		textField.setColumns(10);
+		restaurant_field = new JTextField();
+		restaurant_field.setBounds(335, 68, 116, 22);
+		add(restaurant_field);
+		restaurant_field.setColumns(10);
 		
-		JLabel lblLocation = new JLabel("Location:");
+		JLabel lblLocation = new JLabel("Number of clients:");
 //		lblLocation.setForeground(Color.WHITE);
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblLocation.setBounds(234, 127, 89, 16);
 		add(lblLocation);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(335, 125, 116, 22);
-		add(textField_1);
-		textField_1.setColumns(10);
+		number_field = new JTextField();
+		number_field.setBounds(335, 125, 116, 22);
+		add(number_field);
+		number_field.setColumns(10);
 		
 		JLabel lblDate = new JLabel("Date:");
 //		lblDate.setForeground(Color.WHITE);
@@ -88,8 +92,47 @@ public class Books extends JPanel {
 		panel.setBounds(32, 52, 180, 261);
 		add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
-		
-		JList list = new JList();
+
+		final DefaultListModel<String> listModel = new DefaultListModel<>();
+		for (int i=0;i<reservations_list.length();i++) {
+			JSONObject explrObject = reservations_list.getJSONObject(i);
+			listModel.addElement(explrObject.getString("date"));
+		}
+		final JList list = new JList<>(listModel);
+		list.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				for (int i=0;i<reservations_list.length();i++) {
+					JSONObject explrObject = reservations_list.getJSONObject(i);
+					if (explrObject.getString("date").equals(list.getSelectedValue())){
+						restaurant_field.setText(explrObject.getString("restaurant"));
+						number_field.setText(""+explrObject.getInt("number_clients"));
+						break;
+					}
+
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+
+			}
+		});
 		panel.add(list, BorderLayout.CENTER);
 	}
 }

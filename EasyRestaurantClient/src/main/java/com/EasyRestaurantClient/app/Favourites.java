@@ -1,35 +1,40 @@
 package com.EasyRestaurantClient.app;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JButton;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import java.awt.Color;
-import java.awt.Panel;
-import java.awt.BorderLayout;
-import java.awt.List;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Favourites extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField name_field;
+	private JTextField location_field;
+	private JTextField score_field;
+	private JTextField speciality_field;
+	private JTextField type_field;
+	private String user;
 
 	/**
 	 * Create the panel.
 	 */
-	public Favourites() {
+	public Favourites(String user) {
 //		setBackground(Color.DARK_GRAY);
+		this.user = user;
 		initialize();
 	}
 	
 	public void initialize() {
 		setLayout(null);
-		
+
+		JSONObject filters = new JSONObject();
+		filters.put("user", user);
+		Restaurants restaurants = new Restaurants();
+		final JSONArray favourites_list = restaurants.restaurant_list(filters);
+
 		JLabel lblListOfFavourites = new JLabel("List of favourites:");
 		lblListOfFavourites.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblListOfFavourites.setForeground(Color.WHITE);
@@ -62,33 +67,33 @@ public class Favourites extends JPanel {
 		btnCheckMenu.setBounds(351, 281, 119, 25);
 		add(btnCheckMenu);
 		
-		JLabel lblNmae = new JLabel("Name:");
+		final JLabel lblNmae = new JLabel("Name:");
 		lblNmae.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblNmae.setForeground(Color.WHITE);
 		lblNmae.setBounds(209, 30, 56, 16);
 		add(lblNmae);
 		
-		JLabel lblLocation = new JLabel("Location:");
+		final JLabel lblLocation = new JLabel("Location:");
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblLocation.setForeground(Color.WHITE);
 		lblLocation.setBounds(209, 65, 70, 16);
 		add(lblLocation);
 		
-		JLabel lblSpeciality = new JLabel("Speciality:");
+		final JLabel lblSpeciality = new JLabel("Speciality:");
 		lblSpeciality.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblSpeciality.setForeground(Color.WHITE);
 		lblSpeciality.setBounds(209, 100, 70, 16);
 		add(lblSpeciality);
 		
-		textField = new JTextField();
-		textField.setBounds(309, 28, 161, 22);
-		add(textField);
-		textField.setColumns(10);
+		name_field = new JTextField();
+		name_field.setBounds(309, 28, 161, 22);
+		add(name_field);
+		name_field.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(309, 63, 161, 22);
-		add(textField_1);
-		textField_1.setColumns(10);
+		location_field = new JTextField();
+		location_field.setBounds(309, 63, 161, 22);
+		add(location_field);
+		location_field.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Type:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -96,15 +101,15 @@ public class Favourites extends JPanel {
 		lblNewLabel.setBounds(209, 135, 56, 16);
 		add(lblNewLabel);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(309, 98, 103, 22);
-		add(comboBox);
+		speciality_field = new JTextField();
+		speciality_field.setBounds(309, 98, 103, 22);
+		add(speciality_field);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(309, 133, 103, 22);
-		add(comboBox_1);
+		type_field = new JTextField();
+		type_field.setBounds(309, 133, 103, 22);
+		add(type_field);
 		
-		JLabel lblScore = new JLabel("Score:");
+		final JLabel lblScore = new JLabel("Score:");
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblScore.setForeground(Color.WHITE);
 		lblScore.setBounds(209, 170, 56, 16);
@@ -116,17 +121,61 @@ public class Favourites extends JPanel {
 		lblSchedule.setBounds(209, 205, 70, 16);
 		add(lblSchedule);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(309, 168, 161, 22);
-		add(textField_2);
-		textField_2.setColumns(10);
+		score_field = new JTextField();
+		score_field.setBounds(309, 168, 161, 22);
+		add(score_field);
+		score_field.setColumns(10);
 		
 		Panel panel = new Panel();
 		panel.setBounds(26, 52, 147, 254);
 		add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		List list = new List();
+
+		final DefaultListModel<String> listModel = new DefaultListModel<>();
+		for (int i=0;i<favourites_list.length();i++) {
+			JSONObject explrObject = favourites_list.getJSONObject(i);
+			listModel.addElement(explrObject.getString("name"));
+		}
+		final JList list = new JList<>(listModel);
+		list.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				for (int i=0;i<favourites_list.length();i++) {
+					JSONObject explrObject = favourites_list.getJSONObject(i);
+					if (explrObject.getString("name").equals(list.getSelectedValue())){
+						location_field.setText(explrObject.getString("location"));
+						Float score = explrObject.getFloat("score");
+						score_field.setText(score.toString());
+						speciality_field.setText(explrObject.getString("speciality"));
+						type_field.setText(explrObject.getString("type"));
+						name_field.setText(explrObject.getString("name"));
+						break;
+					}
+
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+
+			}
+		});
 		panel.add(list, BorderLayout.CENTER);
 
 	}

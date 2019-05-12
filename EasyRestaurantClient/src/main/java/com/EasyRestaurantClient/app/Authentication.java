@@ -56,7 +56,7 @@ public class Authentication {
                 response.setText(result);
                 if (result.equals("Correct")){
                     frame.dispose();
-                    Consult frame = new Consult();
+                    Consult frame = new Consult(login_username.getText());
                     frame.setVisible(true);
                 }
             }
