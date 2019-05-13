@@ -104,6 +104,7 @@ def reservations_api(request):
                 c['date'] = reservation.date
                 c['number_clients'] = reservation.number_clients
                 c['restaurant'] = reservation.restaurant.name
+                c['id'] = reservation.id
                 reservations.append(c)
             return JsonResponse(reservations, safe=False, status=200)
         else:
@@ -137,3 +138,30 @@ def reviews_api(request):
             return JsonResponse("Created", safe=False, status=200)
         except:
             return JsonResponse("Incorrect data", safe=False, status=403)
+
+
+@csrf_exempt
+@silk_profile(name='Delete_reservation')
+def delete_reservation(request):
+    if request.method == 'GET':
+        try:
+            reservation = Reservation.objects.all().get(id=int(request.GET['id']))
+            reservation.delete()
+            return JsonResponse("Removed", safe=False)
+        except:
+            return JsonResponse("Reservation doesn't exist", safe=False)
+
+
+@csrf_exempt
+@silk_profile(name='Update_reservation')
+def update_reservation(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        try:
+            reservation = Reservation.objects.all().get(id=int(data['id']))
+            reservation.date=data['date']
+            reservation.number_clients=int(data['number_clients'])
+            reservation.save()
+            return JsonResponse("Updated", safe=False)
+        except:
+            return JsonResponse("Reservation doesn't exist", safe=False)
