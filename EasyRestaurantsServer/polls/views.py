@@ -86,16 +86,16 @@ def restaurants_api(request):
 def reservations_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
-        if User.objects.filter(username=data['user']).exists() and Restaurant.objects.filter(name=data['restaurant']).exists():
+        try:
             user = User.objects.get(username=data['user'])
             r = Reservation.objects.create(user=Client.objects.all().get(user=user), restaurant=Restaurant.objects.get(name=data['restaurant']),
                                        date=data['date'], number_clients=data['number_clients'], comments=data['comments'])
             r.restaurant.capacity -= r.number_clients
             return JsonResponse("Reservation created", safe=False, status=200)
-        else:
+        except:
             return JsonResponse("Wrong details", safe=False, status=403)
     elif request.method == 'GET':
-        if User.objects.filter(username=request.GET['user']).exists():
+        try:
             user = User.objects.get(username=request.GET['user'])
             client = Client.objects.get(user=user)
             reservations = []
@@ -107,7 +107,7 @@ def reservations_api(request):
                 c['id'] = reservation.id
                 reservations.append(c)
             return JsonResponse(reservations, safe=False, status=200)
-        else:
+        except:
             return JsonResponse("User doesn't exist", safe=False, status=403)
 
 
@@ -147,9 +147,9 @@ def delete_reservation(request):
         try:
             reservation = Reservation.objects.all().get(id=int(request.GET['id']))
             reservation.delete()
-            return JsonResponse("Removed", safe=False)
+            return JsonResponse("Removed", safe=False, status=200)
         except:
-            return JsonResponse("Reservation doesn't exist", safe=False)
+            return JsonResponse("Reservation doesn't exist", safe=False, status=403)
 
 
 @csrf_exempt
@@ -162,6 +162,6 @@ def update_reservation(request):
             reservation.date=data['date']
             reservation.number_clients=int(data['number_clients'])
             reservation.save()
-            return JsonResponse("Updated", safe=False)
+            return JsonResponse("Updated", safe=False, status=200)
         except:
-            return JsonResponse("Reservation doesn't exist", safe=False)
+            return JsonResponse("Reservation doesn't exist", safe=False, status=403)

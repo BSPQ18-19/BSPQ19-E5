@@ -1,7 +1,9 @@
 package com.EasyRestaurantClient.app;
 
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import javax.swing.*;
 import java.awt.Font;
@@ -16,6 +18,12 @@ public class Books extends JPanel {
 	private JTextField restaurant_field;
 	private JTextField number_field;
 	private String user;
+	private Reservations reservations = new Reservations();
+	private JSONObject current;
+	private JSONArray reservations_list;
+	private DefaultListModel<String> listModel;
+	private JList list;
+	private JSONObject filters;
 
 	/**
 	 * Create the panel.
@@ -25,13 +33,22 @@ public class Books extends JPanel {
 		this.user = user;
 		initialize();
 	}
+
+	public void update_list(){
+		reservations_list = reservations.reservation_list(filters);
+		listModel = new DefaultListModel<>();
+		for (int i=0;i<reservations_list.length();i++) {
+			JSONObject explrObject = reservations_list.getJSONObject(i);
+			listModel.addElement(explrObject.getString("date")+"-"+String.valueOf(explrObject.getInt("id")));
+		}
+		list.setModel(listModel);
+	}
 	
 	public void initialize() {
 		setLayout(null);
-		JSONObject filters = new JSONObject();
+		filters = new JSONObject();
 		filters.put("user", user);
-		Reservations reservations = new Reservations();
-		final JSONArray reservations_list = reservations.reservation_list(filters);
+		reservations_list = reservations.reservation_list(filters);
 
 		JLabel lblListOfBooks = new JLabel("List of Books:");
 		lblListOfBooks.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -47,6 +64,7 @@ public class Books extends JPanel {
 		
 		restaurant_field = new JTextField();
 		restaurant_field.setBounds(335, 68, 116, 22);
+		restaurant_field.setEditable(false);
 		add(restaurant_field);
 		restaurant_field.setColumns(10);
 		
@@ -70,6 +88,9 @@ public class Books extends JPanel {
 		JButton btnModify = new JButton("Modify");
 		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String id = String.valueOf(current.getInt("id"));
+				reservations.update_reservation("2019-04-12 23:00", Integer.parseInt(number_field.getText()), id);
+				update_list();
 			}
 		});
 		btnModify.setBounds(254, 260, 97, 25);
@@ -78,6 +99,9 @@ public class Books extends JPanel {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String id = String.valueOf(current.getInt("id"));
+				reservations.remove_reservation(id);
+				update_list();
 			}
 		});
 		btnDelete.setBounds(363, 260, 97, 25);
@@ -93,18 +117,19 @@ public class Books extends JPanel {
 		add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 
-		final DefaultListModel<String> listModel = new DefaultListModel<>();
+		listModel = new DefaultListModel<>();
 		for (int i=0;i<reservations_list.length();i++) {
 			JSONObject explrObject = reservations_list.getJSONObject(i);
-			listModel.addElement(explrObject.getString("date"));
+			listModel.addElement(explrObject.getString("date")+"-"+String.valueOf(explrObject.getInt("id")));
 		}
-		final JList list = new JList<>(listModel);
+		list = new JList<>(listModel);
 		list.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				for (int i=0;i<reservations_list.length();i++) {
 					JSONObject explrObject = reservations_list.getJSONObject(i);
-					if (explrObject.getString("date").equals(list.getSelectedValue())){
+					if ((explrObject.getString("date")+"-"+String.valueOf(explrObject.getInt("id"))).equals(list.getSelectedValue())){
+						current = explrObject;
 						restaurant_field.setText(explrObject.getString("restaurant"));
 						number_field.setText(""+explrObject.getInt("number_clients"));
 						break;
@@ -112,27 +137,21 @@ public class Books extends JPanel {
 
 				}
 			}
-
 			@Override
 			public void mousePressed(MouseEvent e) {
-
 			}
-
 			@Override
 			public void mouseReleased(MouseEvent e) {
-
 			}
-
 			@Override
 			public void mouseEntered(MouseEvent e) {
-
 			}
-
 			@Override
 			public void mouseExited(MouseEvent e) {
-
 			}
 		});
 		panel.add(list, BorderLayout.CENTER);
 	}
 }
+
+
