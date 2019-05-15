@@ -13,6 +13,7 @@ import java.awt.Panel;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Locale;
 
 public class Books extends JPanel {
 	private JTextField restaurant_field;
@@ -45,6 +46,7 @@ public class Books extends JPanel {
 	}
 	
 	public void initialize() {
+
 		setLayout(null);
 		filters = new JSONObject();
 		filters.put("user", user);

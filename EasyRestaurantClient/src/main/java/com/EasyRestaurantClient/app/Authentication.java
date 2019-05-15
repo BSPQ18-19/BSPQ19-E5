@@ -21,6 +21,8 @@ public class Authentication {
     private JLabel reg_response;
     private JComboBox comboBox1;
     private JFrame frame;
+    private int lang;
+
 
 
     public Authentication() {
@@ -35,6 +37,7 @@ public class Authentication {
 //        Locale.setDefault(englishLocale);
         if (Locale.getDefault().equals(greekLocale)) {
             comboBox1.setSelectedItem(item2);
+
         }
         else {
             comboBox1.setSelectedItem(item1);
@@ -66,8 +69,10 @@ public class Authentication {
             public void actionPerformed(ActionEvent e) {
                 if (comboBox1.getSelectedItem().toString().equals("Greek")){
                     Locale.setDefault(greekLocale);
+
                 } else {
                     Locale.setDefault(englishLocale);
+
                 }
                 frame.dispose();
                 JFrame frame2 = new JFrame("Authentication");

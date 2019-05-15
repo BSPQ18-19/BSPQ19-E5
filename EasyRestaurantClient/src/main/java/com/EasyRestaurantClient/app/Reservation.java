@@ -17,7 +17,8 @@ import java.util.ResourceBundle;
 
 public class Reservation {
     final static String DATE_FORMAT = "yyyy-MM-dd";
-
+    private String user;
+    private String name_Of_Restaurant;
     private JPanel reservationPanel;
     private JButton cancelButton;
     private JButton OKButton;
@@ -35,18 +36,13 @@ public class Reservation {
     private JFrame frame;
 
 
-    private static int language;
-    public int getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(int language) {
-        this.language = language;
-    }
-
-    public Reservation() {
 
 
+
+    public Reservation(String user, String name_Of_Restaurant) {
+
+        this.user = user;
+        this. name_Of_Restaurant = name_Of_Restaurant;
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,7 +83,8 @@ public class Reservation {
 
     }
 
-    static public void main(String[] args) {
+     public void main(String[] args) {
+
 
         makeResInterface();
 
@@ -165,18 +162,21 @@ public class Reservation {
         return response;
     }
 
-    public static void makeResInterface(){
-        Locale englishLocale = new Locale("en_US");
-        Locale greekLocale = new Locale("el_GR");
-        if (language==0) Locale.setDefault(englishLocale);
-        else Locale.setDefault(greekLocale);
+    public void makeResInterface(){
+
+//        Locale englishLocale = new Locale("en_US");
+//        Locale greekLocale = new Locale("el_GR");
+//        Locale.setDefault(englishLocale);
+
+        System.out.println("Reservation Locale is " +Locale.getDefault().toString());
 
         JFrame frame = new JFrame("My Easy Restaurant");
-        Reservation reservation = new Reservation();
-        reservation.frame = frame;
-        frame.setContentPane(reservation.reservationPanel);
+        this.frame = frame;
+        frame.setContentPane(this.reservationPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        RestaurantInput.setText(this.name_Of_Restaurant);
+        NameInput.setText(this.user);
         frame.setVisible(true);
 
 
@@ -197,7 +197,7 @@ public class Reservation {
         JButton btnOK = new JButton("OK");
         btnOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+
                 try {
                     myFrame2.dispose();
                 } catch (Exception e1) {
@@ -228,7 +228,7 @@ public class Reservation {
         JButton btnOK = new JButton("OK");
         btnOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                
                 try {
                     myFrame2.dispose();
                 } catch (Exception e1) {

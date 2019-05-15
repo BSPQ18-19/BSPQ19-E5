@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Locale;
 
 public class Favourites extends JPanel {
 	private JTextField name_field;
@@ -17,20 +18,28 @@ public class Favourites extends JPanel {
 	private JTextField speciality_field;
 	private JTextField type_field;
 	private String user;
+    private  String name_of_Restaurant;
+    private int language = 0;
 
-	/**
+
+
+
+
+    /**
 	 * Create the panel.
 	 */
-	public Favourites(String user) {
+	public Favourites(String user,int language) {
 //		setBackground(Color.DARK_GRAY);
 		this.user = user;
+		this.language = language;
 		initialize();
 	}
 	
 	public void initialize() {
 		setLayout(null);
+        System.out.println("Favourites Locale is " + Locale.getDefault().toString());
 
-		JSONObject filters = new JSONObject();
+        JSONObject filters = new JSONObject();
 		filters.put("user", user);
 		Restaurants restaurants = new Restaurants();
 		final JSONArray favourites_list = restaurants.restaurant_list(filters);
@@ -42,13 +51,19 @@ public class Favourites extends JPanel {
 		lblListOfFavourites.setBounds(26, 30, 119, 16);
 		add(lblListOfFavourites);
 		
-		JButton btnNewButton = new JButton("Book");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(178, 281, 70, 25);
-		add(btnNewButton);
+		JButton bookButton = new JButton("Book");
+        bookButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Reservation res = new Reservation(user,name_of_Restaurant);
+                res.makeResInterface();
+            }
+        });
+//		bookButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+		bookButton.setBounds(178, 281, 70, 25);
+		add(bookButton);
 		
 		JButton btnReview = new JButton("Review");
 		btnReview.addActionListener(new ActionListener() {
@@ -144,6 +159,7 @@ public class Favourites extends JPanel {
 				for (int i=0;i<favourites_list.length();i++) {
 					JSONObject explrObject = favourites_list.getJSONObject(i);
 					if (explrObject.getString("name").equals(list.getSelectedValue())){
+						name_of_Restaurant = explrObject.getString("name");
 						location_field.setText(explrObject.getString("location"));
 						Float score = explrObject.getFloat("score");
 						score_field.setText(score.toString());
