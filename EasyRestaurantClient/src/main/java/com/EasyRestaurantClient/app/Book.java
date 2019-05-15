@@ -7,6 +7,7 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ResourceBundle;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,6 +18,7 @@ public class Book extends JPanel {
 	 * Create the panel.
 	 */
 	public Book() {
+
 		setLayout(null);
 		JSONObject reservation=getBook();
 		
@@ -43,7 +45,7 @@ public class Book extends JPanel {
 		
 		JLabel lblDate = new JLabel("Date");
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDate.setBounds(289, 366, 246, 20);
+		lblDate.setBounds(289, 366, 246, 40);
 		lblDate.setText(reservation.getString("date"));
 		add(lblDate);
 		

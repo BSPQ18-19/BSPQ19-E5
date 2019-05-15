@@ -14,6 +14,7 @@ import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Books extends JPanel {
 	private JTextField restaurant_field;
@@ -47,18 +48,21 @@ public class Books extends JPanel {
 	
 	public void initialize() {
 
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
+
 		setLayout(null);
 		filters = new JSONObject();
 		filters.put("user", user);
 		reservations_list = reservations.reservation_list(filters);
 
-		JLabel lblListOfBooks = new JLabel("List of Books:");
+		JLabel lblListOfBooks = new JLabel(resourceBundle.getString("list.of.books"));
 		lblListOfBooks.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblListOfBooks.setForeground(Color.WHITE);
 		lblListOfBooks.setBounds(40, 30, 119, 16);
 		add(lblListOfBooks);
 		
-		JLabel lblName = new JLabel("Restaurant:");
+		JLabel lblName = new JLabel(resourceBundle.getString("Restname"));
 //		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblName.setBounds(234, 70, 89, 16);
@@ -70,7 +74,7 @@ public class Books extends JPanel {
 		add(restaurant_field);
 		restaurant_field.setColumns(10);
 		
-		JLabel lblLocation = new JLabel("Number of clients:");
+		JLabel lblLocation = new JLabel(resourceBundle.getString("number.of.clients"));
 //		lblLocation.setForeground(Color.WHITE);
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblLocation.setBounds(234, 127, 89, 16);
@@ -81,13 +85,13 @@ public class Books extends JPanel {
 		add(number_field);
 		number_field.setColumns(10);
 		
-		JLabel lblDate = new JLabel("Date:");
+		JLabel lblDate = new JLabel(resourceBundle.getString("Date") + ":");
 //		lblDate.setForeground(Color.WHITE);
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDate.setBounds(234, 187, 56, 16);
 		add(lblDate);
 		
-		JButton btnModify = new JButton("Modify");
+		JButton btnModify = new JButton(resourceBundle.getString("modify"));
 		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = String.valueOf(current.getInt("id"));
@@ -98,7 +102,7 @@ public class Books extends JPanel {
 		btnModify.setBounds(254, 260, 97, 25);
 		add(btnModify);
 		
-		JButton btnDelete = new JButton("Delete");
+		JButton btnDelete = new JButton(resourceBundle.getString("delete"));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = String.valueOf(current.getInt("id"));

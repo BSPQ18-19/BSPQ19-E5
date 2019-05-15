@@ -3,6 +3,7 @@ package com.EasyRestaurantClient.app;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -48,6 +49,9 @@ public class Consult extends JFrame {
 		if(lang == 0) Locale.setDefault(englishLocale);
 		else Locale.setDefault(greekLocale);
 
+
+		ResourceBundle mybundle = ResourceBundle.getBundle("Resource");
+
 		System.out.println("Consult Locale is " +Locale.getDefault().toString());
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,9 +65,9 @@ public class Consult extends JFrame {
 		Favourites f = new Favourites(user,0);
 		Books b= new Books(user);
 		pestañas = new JTabbedPane(JTabbedPane.TOP);
-		pestañas.add("Restaurants", r);
-		pestañas.add("Favourites", f);
-		pestañas.add("Books", b);
+		pestañas.add(mybundle.getString("restaurants"), r);
+		pestañas.add(mybundle.getString("favourites"), f);
+		pestañas.add(mybundle.getString("books"), b);
 		contentPane.add(pestañas, BorderLayout.CENTER);
 	}
 

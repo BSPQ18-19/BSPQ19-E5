@@ -182,6 +182,8 @@ public class Reservation {
 
     }
     public static void negRespondMessage() {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
         final JFrame myFrame2 = new JFrame();
 
         myFrame2.setVisible(true);
@@ -190,7 +192,7 @@ public class Reservation {
         myFrame2.setTitle("The Easy Restaurant");
         myFrame2.getContentPane().setLayout(null);
 
-        JLabel hFail = new JLabel("Sorry but the reservation request was unable to proceed.");
+        JLabel hFail = new JLabel(resourceBundle.getString("RequestFail"));
         hFail.setBounds(100, 100, 1000, 14);
         myFrame2.getContentPane().add(hFail);
 
@@ -213,6 +215,8 @@ public class Reservation {
 
 
     public static void posRespondMessage() {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
         final JFrame myFrame2 = new JFrame();
 
         myFrame2.setVisible(true);
@@ -221,14 +225,14 @@ public class Reservation {
         myFrame2.setTitle("My Easy Restaurant");
         myFrame2.getContentPane().setLayout(null);
 
-        JLabel hFail = new JLabel("Your reservation has been made. Thank you !");
-        hFail.setBounds(100, 100, 1000, 14);
-        myFrame2.getContentPane().add(hFail);
+        JLabel hSucc = new JLabel(resourceBundle.getString("SuccessReserv"));
+        hSucc.setBounds(100, 100, 1000, 14);
+        myFrame2.getContentPane().add(hSucc);
 
         JButton btnOK = new JButton("OK");
         btnOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+
                 try {
                     myFrame2.dispose();
                 } catch (Exception e1) {

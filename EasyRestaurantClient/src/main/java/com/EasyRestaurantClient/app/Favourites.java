@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Favourites extends JPanel {
 	private JTextField name_field;
@@ -36,7 +37,9 @@ public class Favourites extends JPanel {
 	}
 	
 	public void initialize() {
-		setLayout(null);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
+        setLayout(null);
         System.out.println("Favourites Locale is " + Locale.getDefault().toString());
 
         JSONObject filters = new JSONObject();
@@ -44,14 +47,14 @@ public class Favourites extends JPanel {
 		Restaurants restaurants = new Restaurants();
 		final JSONArray favourites_list = restaurants.restaurant_list(filters);
 
-		JLabel lblListOfFavourites = new JLabel("List of favourites:");
+		JLabel lblListOfFavourites = new JLabel(resourceBundle.getString("list.of.favourites"));
 		lblListOfFavourites.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblListOfFavourites.setForeground(Color.WHITE);
 //		lblListOfFavourites.setBackground(Color.WHITE);
 		lblListOfFavourites.setBounds(26, 30, 119, 16);
 		add(lblListOfFavourites);
 		
-		JButton bookButton = new JButton("Book");
+		JButton bookButton = new JButton(resourceBundle.getString("book"));
         bookButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Reservation res = new Reservation(user,name_of_Restaurant);
@@ -62,39 +65,39 @@ public class Favourites extends JPanel {
 //			public void actionPerformed(ActionEvent e) {
 //			}
 //		});
-		bookButton.setBounds(178, 281, 70, 25);
+		bookButton.setBounds(178, 281, 100, 25);
 		add(bookButton);
 		
-		JButton btnReview = new JButton("Review");
+		JButton btnReview = new JButton(resourceBundle.getString("review"));
 		btnReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnReview.setBounds(260, 281, 79, 25);
+		btnReview.setBounds(290, 281, 100, 25);
 		add(btnReview);
 		
-		JButton btnCheckMenu = new JButton("Check Menu");
+		JButton btnCheckMenu = new JButton(resourceBundle.getString("check.menu"));
 		btnCheckMenu.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCheckMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCheckMenu.setBounds(351, 281, 119, 25);
+		btnCheckMenu.setBounds(400, 281, 120, 25);
 		add(btnCheckMenu);
 		
-		final JLabel lblNmae = new JLabel("Name:");
+		final JLabel lblNmae = new JLabel(resourceBundle.getString("Name"));
 		lblNmae.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblNmae.setForeground(Color.WHITE);
 		lblNmae.setBounds(209, 30, 56, 16);
 		add(lblNmae);
 		
-		final JLabel lblLocation = new JLabel("Location:");
+		final JLabel lblLocation = new JLabel(resourceBundle.getString("location") + ":");
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblLocation.setForeground(Color.WHITE);
 		lblLocation.setBounds(209, 65, 70, 16);
 		add(lblLocation);
 		
-		final JLabel lblSpeciality = new JLabel("Speciality:");
+		final JLabel lblSpeciality = new JLabel(resourceBundle.getString("speciality") + ":");
 		lblSpeciality.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblSpeciality.setForeground(Color.WHITE);
 		lblSpeciality.setBounds(209, 100, 70, 16);
@@ -110,7 +113,7 @@ public class Favourites extends JPanel {
 		add(location_field);
 		location_field.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Type:");
+		JLabel lblNewLabel = new JLabel(resourceBundle.getString("type") + ":");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(209, 135, 56, 16);
@@ -124,13 +127,13 @@ public class Favourites extends JPanel {
 		type_field.setBounds(309, 133, 103, 22);
 		add(type_field);
 		
-		final JLabel lblScore = new JLabel("Score:");
+		final JLabel lblScore = new JLabel(resourceBundle.getString("score") + ":");
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblScore.setForeground(Color.WHITE);
 		lblScore.setBounds(209, 170, 56, 16);
 		add(lblScore);
 		
-		JLabel lblSchedule = new JLabel("Schedule:");
+		JLabel lblSchedule = new JLabel(resourceBundle.getString("schedule") + ":");
 		lblSchedule.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblSchedule.setForeground(Color.WHITE);
 		lblSchedule.setBounds(209, 205, 70, 16);
