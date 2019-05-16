@@ -42,17 +42,11 @@ public class Consult extends JFrame {
 	
 	public void initialize() {
 		//Language settings
-		int lang = 0;
-		final Locale englishLocale = new Locale("en_US");
-		final Locale greekLocale = new Locale("el_GR");
-		Locale.setDefault(greekLocale);
-		if(lang == 0) Locale.setDefault(englishLocale);
-		else Locale.setDefault(greekLocale);
-
+		Locale.setDefault(Locale.getDefault());
 
 		ResourceBundle mybundle = ResourceBundle.getBundle("Resource");
 
-		System.out.println("Consult Locale is " +Locale.getDefault().toString());
+//		System.out.println("Consult Locale is " +Locale.getDefault().toString());
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);

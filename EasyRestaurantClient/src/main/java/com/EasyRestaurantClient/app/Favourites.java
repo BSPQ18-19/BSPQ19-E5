@@ -21,6 +21,7 @@ public class Favourites extends JPanel {
 	private String user;
     private  String name_of_Restaurant;
     private int language = 0;
+    private JSONObject current;
 
 
 
@@ -71,6 +72,7 @@ public class Favourites extends JPanel {
 		JButton btnReview = new JButton(resourceBundle.getString("review"));
 		btnReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 			}
 		});
 		btnReview.setBounds(290, 281, 100, 25);
@@ -80,6 +82,7 @@ public class Favourites extends JPanel {
 		btnCheckMenu.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCheckMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String menu = current.getString("menu"); // To create menu window
 			}
 		});
 		btnCheckMenu.setBounds(400, 281, 120, 25);
@@ -162,6 +165,7 @@ public class Favourites extends JPanel {
 				for (int i=0;i<favourites_list.length();i++) {
 					JSONObject explrObject = favourites_list.getJSONObject(i);
 					if (explrObject.getString("name").equals(list.getSelectedValue())){
+						current = explrObject;
 						name_of_Restaurant = explrObject.getString("name");
 						location_field.setText(explrObject.getString("location"));
 						Float score = explrObject.getFloat("score");
