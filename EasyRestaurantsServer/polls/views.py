@@ -69,6 +69,7 @@ def restaurants_api(request):
         restaurants = []
         for restaurant in filtered:
             c = {}
+            c['id'] = restaurant.id
             c['name'] = restaurant.name
             c['location'] = restaurant.location
             c['speciality'] = restaurant.speciality
@@ -162,6 +163,24 @@ def update_reservation(request):
             reservation.date=data['date']
             reservation.number_clients=int(data['number_clients'])
             reservation.save()
+            return JsonResponse("Updated", safe=False, status=200)
+        except:
+            return JsonResponse("Reservation doesn't exist", safe=False, status=403)
+
+@csrf_exempt
+@silk_profile(name='Favourite')
+def make_favourite(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        try:
+            restaurant = Restaurant.objects.all().get(id=int(data['id']))
+            user = User.objects.all().get(username=data['user'])
+            client = Client.objects.all().get(user=user)
+            if restaurant in client.favourites.all():
+                client.favourites.remove(restaurant)
+            else:
+                client.favourites.add(restaurant)
+            client.save()
             return JsonResponse("Updated", safe=False, status=200)
         except:
             return JsonResponse("Reservation doesn't exist", safe=False, status=403)

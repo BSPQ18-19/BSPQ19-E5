@@ -5,10 +5,7 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -20,21 +17,33 @@ public class Favourites extends JPanel {
 	private JTextField type_field;
 	private String user;
     private  String name_of_Restaurant;
-    private int language = 0;
     private JSONObject current;
-
-
+	private JSONArray favourites_list;
+	private DefaultListModel<String> listModel;
+	private JList list;
+	private Restaurants restaurants = new Restaurants();
 
 
 
     /**
 	 * Create the panel.
 	 */
-	public Favourites(String user,int language) {
+	public Favourites(String user) {
 //		setBackground(Color.DARK_GRAY);
 		this.user = user;
-		this.language = language;
 		initialize();
+	}
+
+	public void update(){
+		JSONObject filters = new JSONObject();
+		filters.put("user", user);
+		favourites_list = restaurants.restaurant_list(filters);
+		listModel = new DefaultListModel<>();
+		for (int i=0;i<favourites_list.length();i++) {
+			JSONObject explrObject = favourites_list.getJSONObject(i);
+			listModel.addElement(explrObject.getString("name"));
+		}
+		list.setModel(listModel);
 	}
 	
 	public void initialize() {
@@ -43,10 +52,9 @@ public class Favourites extends JPanel {
         setLayout(null);
         System.out.println("Favourites Locale is " + Locale.getDefault().toString());
 
-        JSONObject filters = new JSONObject();
+		JSONObject filters = new JSONObject();
 		filters.put("user", user);
-		Restaurants restaurants = new Restaurants();
-		final JSONArray favourites_list = restaurants.restaurant_list(filters);
+		favourites_list = restaurants.restaurant_list(filters);
 
 		JLabel lblListOfFavourites = new JLabel(resourceBundle.getString("list.of.favourites"));
 		lblListOfFavourites.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -54,6 +62,17 @@ public class Favourites extends JPanel {
 //		lblListOfFavourites.setBackground(Color.WHITE);
 		lblListOfFavourites.setBounds(26, 30, 119, 16);
 		add(lblListOfFavourites);
+
+		JButton btnFavourite = new JButton("Remove");
+		btnFavourite.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				restaurants.add_favourite(current.getInt("id"), user);
+				update();
+			}
+		});
+		btnFavourite.setBounds(420, 0, 90, 23);
+		add(btnFavourite);
 		
 		JButton bookButton = new JButton(resourceBundle.getString("book"));
         bookButton.addActionListener(new ActionListener() {
@@ -153,12 +172,12 @@ public class Favourites extends JPanel {
 		panel.setLayout(new BorderLayout(0, 0));
 		
 
-		final DefaultListModel<String> listModel = new DefaultListModel<>();
+		listModel = new DefaultListModel<>();
 		for (int i=0;i<favourites_list.length();i++) {
 			JSONObject explrObject = favourites_list.getJSONObject(i);
 			listModel.addElement(explrObject.getString("name"));
 		}
-		final JList list = new JList<>(listModel);
+		list = new JList<>(listModel);
 		list.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

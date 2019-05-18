@@ -27,7 +27,7 @@ public class Reservations {
             URL object = new URL(url);
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setRequestProperty("Content-Type", "application-json");
+            con.setRequestProperty("Content-Type", "application-filters");
             con.setRequestMethod("GET");
             con.setDoOutput(true);
 
@@ -73,7 +73,7 @@ public class Reservations {
             URL object = new URL(url);
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setRequestProperty("Content-Type", "application-json");
+            con.setRequestProperty("Content-Type", "application-filters");
             con.setRequestMethod("POST");
             con.setDoOutput(true);
 
@@ -132,7 +132,7 @@ public class Reservations {
             URL object = new URL(url);
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setRequestProperty("Content-Type", "application-json");
+            con.setRequestProperty("Content-Type", "application-filters");
             con.setRequestMethod("GET");
             con.setDoOutput(true);
 

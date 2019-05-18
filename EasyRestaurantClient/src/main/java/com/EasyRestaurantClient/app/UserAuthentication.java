@@ -35,7 +35,7 @@ public class UserAuthentication
             URL object = new URL(url);
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setRequestProperty("Content-Type", "application-json");
+            con.setRequestProperty("Content-Type", "application-filters");
             con.setRequestMethod("POST");
             con.setDoOutput(true);
 
@@ -105,7 +105,7 @@ public class UserAuthentication
             URL object = new URL(url);
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setRequestProperty("Content-Type", "application-json");
+            con.setRequestProperty("Content-Type", "application-filters");
             con.setRequestMethod("POST");
             con.setDoOutput(true);
 

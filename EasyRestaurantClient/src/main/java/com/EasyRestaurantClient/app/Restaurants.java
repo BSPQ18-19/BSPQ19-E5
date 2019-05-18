@@ -1,5 +1,6 @@
 package com.EasyRestaurantClient.app;
 
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import sun.rmi.runtime.Log;
@@ -46,7 +47,7 @@ public class Restaurants {
             URL object = new URL(url);
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setRequestProperty("Content-Type", "application-json");
+            con.setRequestProperty("Content-Type", "application-filters");
             con.setRequestMethod("GET");
             con.setDoOutput(true);
 
@@ -77,5 +78,60 @@ public class Restaurants {
             return null;
         }
         return jsonArray;
+    }
+
+    Boolean add_favourite(Integer id, String user){
+        InputStream in = null;
+        OutputStream out = null;
+        Boolean response = true;
+        String reply = "";
+
+        try {
+            String url = "http://127.0.0.1:8000/favourite/";
+            URL object = new URL(url);
+
+            HttpURLConnection con = (HttpURLConnection) object.openConnection();
+            con.setRequestProperty("Content-Type", "application-filters");
+            con.setRequestMethod("POST");
+            con.setDoOutput(true);
+
+            JSONObject json = new JSONObject();
+            json.put("id", id);
+            json.put("user", user);
+
+            out = con.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+            writer.write(json.toString());
+            writer.flush();
+            writer.close();
+            out.close();
+
+            int respCode = con.getResponseCode();
+            logger.info("response code " + respCode);
+
+
+            if (respCode == HttpURLConnection.HTTP_OK) {
+                String line;
+                in = con.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                while ((line = reader.readLine()) != null) {
+                    reply += line;
+                }
+
+                reader.close();
+                in.close();
+
+                logger.info("response content " + reply);
+
+                response = !reply.contains("Wrong");
+            } else {
+                response = false;
+            }
+            con.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return response;
     }
 }
