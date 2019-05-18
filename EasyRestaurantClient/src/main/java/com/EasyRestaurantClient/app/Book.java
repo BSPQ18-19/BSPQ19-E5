@@ -7,7 +7,6 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ResourceBundle;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,34 +17,33 @@ public class Book extends JPanel {
 	 * Create the panel.
 	 */
 	public Book() {
-
 		setLayout(null);
 		JSONObject reservation=getBook();
 		
 		JLabel lblListOfBooks = new JLabel("List of books");
 		lblListOfBooks.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblListOfBooks.setBounds(65, 70, 184, 30);
+		lblListOfBooks.setBounds(30, 23, 184, 30);
 		add(lblListOfBooks);
 		
 		JList list = new JList();
-		list.setBounds(30, 128, 219, 346);
+		list.setBounds(10, 64, 219, 249);
 		add(list);
 		
 		JLabel lblRestaurantName = new JLabel("Restaurant name");
 		lblRestaurantName.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblRestaurantName.setBounds(289, 142, 246, 20);
+		lblRestaurantName.setBounds(239, 64, 246, 20);
 		lblRestaurantName.setText(reservation.getString("restaurant"));
 		add(lblRestaurantName);
 		
 		JLabel lblLocation = new JLabel("Location");
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblLocation.setBounds(289, 255, 246, 20);
+		lblLocation.setBounds(239, 127, 246, 20);
 		lblLocation.setText(reservation.getString("localization"));
 		add(lblLocation);
 		
 		JLabel lblDate = new JLabel("Date");
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDate.setBounds(289, 366, 246, 40);
+		lblDate.setBounds(239, 246, 246, 20);
 		lblDate.setText(reservation.getString("date"));
 		add(lblDate);
 		
@@ -59,12 +57,16 @@ public class Book extends JPanel {
 				
 			}
 		});
-		btnModify.setBounds(283, 430, 89, 23);
+		btnModify.setBounds(236, 342, 89, 23);
 		add(btnModify);
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(415, 430, 89, 23);
+		btnDelete.setBounds(376, 342, 89, 23);
 		add(btnDelete);
+		
+		JButton btnFavourite = new JButton("Favourite");
+		btnFavourite.setBounds(396, 11, 89, 23);
+		add(btnFavourite);
 
 	}
 	public JSONObject getBook() {
