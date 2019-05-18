@@ -11,8 +11,42 @@ from polls.forms import *
 from silk.profiling.profiler import silk_profile
 from datetime import datetime
 
+
+## @package pyexample
+#  Documentation for this module.
+#
+#  More details.
+## Documentation for a function.
+#
+#  More details.
+def func():
+    pass
+
+
+## Documentation for a class.
+#
+#  More details.
+class PyClass:
+
+    ## The constructor.
+    def __init__(self):
+        self._memVar = 0
+
+    ## Documentation for a method.
+    #  @param self The object pointer.
+    def PyMethod(self):
+        pass
+
+    ## A class variable.
+    classVar = 0
+    ## @var _memVar
+    #  a member variable
+
 @csrf_exempt
 @silk_profile(name='Registration')
+## Documentation for a function.
+#
+#  More details.
 def register_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
@@ -32,10 +66,12 @@ def register_api(request):
 
 @csrf_exempt
 @silk_profile(name='Login')
+## Documentation for a function.
+#
+#  More details.
 def login_api(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
-        # print(User.objects.filter(username=data['username']).exists())
         if User.objects.filter(username=data['username']).exists():
             user = authenticate(username=data['username'], password=data['password'])
             try:
@@ -53,7 +89,6 @@ def login_api(request):
 
 
 
-#Used for both getting favourites restaurants of a user or filtering all restaurants
 @csrf_exempt
 @silk_profile(name='Restaurants')
 def restaurants_api(request):
@@ -63,7 +98,7 @@ def restaurants_api(request):
             filtered = Client.objects.all().get(user=user).favourites.all()
         except:
             qdict={}
-            for key in request.GET.keys(): #Builds dicctionary for the query to filter restaurants
+            for key in request.GET.keys():
                 qdict[key]= request.GET[key]
             filtered = Restaurant.objects.all().filter(**qdict)
         restaurants = []
@@ -113,7 +148,6 @@ def reservations_api(request):
 
 
 
-#Used for both getting favourites restaurants of a user or filtering all restaurants
 @csrf_exempt
 @silk_profile(name='Reviews')
 def reviews_api(request):
