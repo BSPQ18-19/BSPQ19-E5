@@ -12,42 +12,22 @@ from silk.profiling.profiler import silk_profile
 from datetime import datetime
 
 
-## @package pyexample
-#  Documentation for this module.
+## @package Register
+#  API documentation for registering users.
 #
-#  More details.
-## Documentation for a function.
-#
-#  More details.
-def func():
-    pass
-
-
-## Documentation for a class.
-#
-#  More details.
-class PyClass:
-
-    ## The constructor.
-    def __init__(self):
-        self._memVar = 0
-
-    ## Documentation for a method.
-    #  @param self The object pointer.
-    def PyMethod(self):
-        pass
-
-    ## A class variable.
-    classVar = 0
-    ## @var _memVar
-    #  a member variable
 
 @csrf_exempt
 @silk_profile(name='Registration')
-## Documentation for a function.
-#
-#  More details.
 def register_api(request):
+    """
+    Manages the request to register a user
+
+    Args:
+        request:   Http request.
+
+    Returns:
+        JSon Response
+    """
     if request.method == 'POST':
         data = JSONParser().parse(request)
         if not User.objects.filter(username=data['username']).exists():
@@ -64,12 +44,22 @@ def register_api(request):
             return JsonResponse("Username already exists", safe=False, status=403)
 
 
+## @package Login
+#  API documentation.
+#
+
 @csrf_exempt
 @silk_profile(name='Login')
-## Documentation for a function.
-#
-#  More details.
 def login_api(request):
+    """
+    Manages the request to login a user
+
+    Args:
+        request:   Http request.
+
+    Returns:
+        JSon Response
+    """
     if request.method == 'POST':
         data = JSONParser().parse(request)
         if User.objects.filter(username=data['username']).exists():
@@ -87,8 +77,9 @@ def login_api(request):
             return JsonResponse("Invalid user", status=403, safe=False)
 
 
-
-
+## @package Restaurants
+#  API documentation.
+#
 @csrf_exempt
 @silk_profile(name='Restaurants')
 def restaurants_api(request):

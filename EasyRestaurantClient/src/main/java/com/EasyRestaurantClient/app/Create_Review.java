@@ -47,7 +47,7 @@ public class Create_Review extends JFrame{
 		textPaneComments.setBounds(23, 36, 338, 122);
 		panelAddReview.add(textPaneComments);
 		
-		JLabel lblScore = new JLabel(resourceBundle.getString("score"+":"));
+		JLabel lblScore = new JLabel(resourceBundle.getString("score")+":");
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblScore.setBounds(23, 171, 66, 17);
 		panelAddReview.add(lblScore);

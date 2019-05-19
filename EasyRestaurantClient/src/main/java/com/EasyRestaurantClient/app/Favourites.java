@@ -64,7 +64,7 @@ public class Favourites extends JPanel {
 		lblListOfFavourites.setBounds(26, 30, 119, 16);
 		add(lblListOfFavourites);
 
-		JButton btnFavourite = new JButton("Remove");
+		JButton btnFavourite = new JButton(resourceBundle.getString("delete"));
 		btnFavourite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
