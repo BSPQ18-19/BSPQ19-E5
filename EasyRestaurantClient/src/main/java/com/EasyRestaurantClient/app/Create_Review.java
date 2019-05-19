@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ResourceBundle;
 
 public class Create_Review extends JFrame{
 
@@ -25,6 +26,7 @@ public class Create_Review extends JFrame{
 	 * Create the frame.
 	 */
 	public Create_Review(final String name_of_restaurant, final Reviews_Window r) {
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 416, 300);
 		contentPane = new JPanel();
@@ -36,7 +38,7 @@ public class Create_Review extends JFrame{
 		contentPane.add(panelAddReview, BorderLayout.CENTER);
 		panelAddReview.setLayout(null);
 		
-		JLabel lblComments = new JLabel("Comments:");
+		JLabel lblComments = new JLabel(resourceBundle.getString("comments"));
 		lblComments.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblComments.setBounds(23, 6, 100, 17);
 		panelAddReview.add(lblComments);
@@ -45,7 +47,7 @@ public class Create_Review extends JFrame{
 		textPaneComments.setBounds(23, 36, 338, 122);
 		panelAddReview.add(textPaneComments);
 		
-		JLabel lblScore = new JLabel("Score:");
+		JLabel lblScore = new JLabel(resourceBundle.getString("score"+":"));
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblScore.setBounds(23, 171, 66, 17);
 		panelAddReview.add(lblScore);
@@ -55,7 +57,7 @@ public class Create_Review extends JFrame{
 		panelAddReview.add(textFieldScore);
 		textFieldScore.setColumns(10);
 		
-		JButton btnSubmit = new JButton("Submit");
+		JButton btnSubmit = new JButton(resourceBundle.getString("submit"));
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reviews.make_review(name_of_restaurant, textPaneComments.getText(), Double.valueOf(textFieldScore.getText()));

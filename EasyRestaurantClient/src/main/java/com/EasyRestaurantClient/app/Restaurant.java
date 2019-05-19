@@ -61,28 +61,28 @@ public class Restaurant extends JPanel {
 		lblSpecialty.setBounds(79, 129, 64, 27);
 		add(lblSpecialty);
 
-		JCheckBox chckbxFastFood = new JCheckBox("Fast Food");
+		JCheckBox chckbxFastFood = new JCheckBox(resourceBundle.getString("fast.food"));
 		chckbxFastFood.setBounds(20, 163, 97, 23);
 		if(chckbxFastFood.isSelected()) {
 			filters.put("speciality","Fast Food");
 		}
 		add(chckbxFastFood);
 
-		JCheckBox chckbxCommon = new JCheckBox("Common");
+		JCheckBox chckbxCommon = new JCheckBox(resourceBundle.getString("common"));
 		chckbxCommon.setBounds(124, 163, 97, 23);
 		add(chckbxCommon);
 		if(chckbxCommon.isSelected()) {
-			filters.put("speciality","Fast Food");
+			filters.put("speciality","Common");
 		}
 
-		JCheckBox chckbxDessert = new JCheckBox("Dessert");
+		JCheckBox chckbxDessert = new JCheckBox(resourceBundle.getString("dessert"));
 		chckbxDessert.setBounds(20, 194, 97, 23);
 		add(chckbxDessert);
 		if(chckbxDessert.isSelected()) {
 			filters.put("speciality","Dessert");
 		}
 
-		JCheckBox chckbxInnovative = new JCheckBox("Innovative");
+		JCheckBox chckbxInnovative = new JCheckBox(resourceBundle.getString("innovative"));
 		chckbxInnovative.setBounds(124, 194, 97, 23);
 		add(chckbxInnovative);
 		if(chckbxInnovative.isSelected()) {
@@ -94,35 +94,35 @@ public class Restaurant extends JPanel {
 		lblType.setBounds(307, 133, 58, 19);
 		add(lblType);
 
-		JCheckBox chckbxAsiatic = new JCheckBox("Asiatic");
+		JCheckBox chckbxAsiatic = new JCheckBox(resourceBundle.getString("asiatic"));
 		chckbxAsiatic.setBounds(281, 163, 64, 23);
 		add(chckbxAsiatic);
 		if(chckbxAsiatic.isSelected()) {
 			filters.put("type","Asiatic");
 		}
 
-		JCheckBox chckbxItalian = new JCheckBox("Italian");
+		JCheckBox chckbxItalian = new JCheckBox(resourceBundle.getString("italian"));
 		chckbxItalian.setBounds(281, 194, 64, 23);
 		add(chckbxItalian);
 		if(chckbxItalian.isSelected()) {
 			filters.put("type","Italian");
 		}
 
-		JCheckBox chckbxMexican = new JCheckBox("Mexican");
+		JCheckBox chckbxMexican = new JCheckBox(resourceBundle.getString("mexican"));
 		chckbxMexican.setBounds(353, 163, 97, 23);
 		add(chckbxMexican);
 		if(chckbxMexican.isSelected()) {
 			filters.put("type","Mexican");
 		}
 
-		JCheckBox chckbxLocal = new JCheckBox("Local");
+		JCheckBox chckbxLocal = new JCheckBox(resourceBundle.getString("local"));
 		chckbxLocal.setBounds(353, 194, 97, 23);
 		add(chckbxLocal);
 		if(chckbxLocal.isSelected()) {
 			filters.put("type","Local");
 		}
 
-		JLabel lblDate = new JLabel("Date");
+		JLabel lblDate = new JLabel(resourceBundle.getString("Date"));
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblDate.setBounds(312, 366, 53, 14);
 		add(lblDate);
@@ -133,7 +133,7 @@ public class Restaurant extends JPanel {
 		add(txtDatefield);
 		txtDatefield.setColumns(10);
 
-		JLabel lblScore = new JLabel("Score");
+		JLabel lblScore = new JLabel(resourceBundle.getString("score"));
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblScore.setBounds(52, 366, 46, 14);
 		add(lblScore);
@@ -143,7 +143,7 @@ public class Restaurant extends JPanel {
 		add(txtScorefield);
 		txtScorefield.setColumns(10);
 
-		JButton btnSearch = new JButton("Search");
+		JButton btnSearch = new JButton(resourceBundle.getString("search"));
 		btnSearch.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -169,7 +169,7 @@ public class Restaurant extends JPanel {
 		final Restaurants restaurants = new Restaurants();
 		final JSONArray favourites_list = restaurants.restaurant_list(filters);
 
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton(resourceBundle.getString("back"));
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -183,7 +183,7 @@ public class Restaurant extends JPanel {
 		btnBack.setBounds(0, 0, 89, 23);
 		add(btnBack);
 
-		JButton btnFavourite = new JButton("Favourite");
+		JButton btnFavourite = new JButton(resourceBundle.getString("favourite"));
 		btnFavourite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -193,7 +193,7 @@ public class Restaurant extends JPanel {
 		btnFavourite.setBounds(420, 0, 90, 23);
 		add(btnFavourite);
 
-		JLabel lblListOfFavourites = new JLabel("List of restaurants");
+		JLabel lblListOfFavourites = new JLabel(resourceBundle.getString("list.of.restaurants"));
 		lblListOfFavourites.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblListOfFavourites.setForeground(Color.WHITE);
 //		lblListOfFavourites.setBackground(Color.WHITE);

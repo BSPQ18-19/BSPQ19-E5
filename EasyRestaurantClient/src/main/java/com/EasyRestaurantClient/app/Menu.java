@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Font;
+import java.util.ResourceBundle;
 
 public class Menu extends JFrame {
 
@@ -13,7 +14,10 @@ public class Menu extends JFrame {
 
 	
 	public Menu(String menu_r) {
-		setTitle("Restaurant Menu");
+
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
+		setTitle(resourceBundle.getString("restaurant.menu"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 200, 300);
 		contentPane = new JPanel();
@@ -21,7 +25,7 @@ public class Menu extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JLabel lblMenu = new JLabel("Menu");
+		JLabel lblMenu = new JLabel(resourceBundle.getString("menu"));
 		lblMenu.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblMenu, BorderLayout.NORTH);
