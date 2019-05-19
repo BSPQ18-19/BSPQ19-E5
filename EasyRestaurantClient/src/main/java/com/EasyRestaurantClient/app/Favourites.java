@@ -15,6 +15,7 @@ public class Favourites extends JPanel {
 	private JTextField score_field;
 	private JTextField speciality_field;
 	private JTextField type_field;
+	private JButton btnReview;
 	private String user;
     private  String name_of_Restaurant;
     private JSONObject current;
@@ -88,10 +89,14 @@ public class Favourites extends JPanel {
 		bookButton.setBounds(178, 281, 100, 25);
 		add(bookButton);
 		
-		JButton btnReview = new JButton(resourceBundle.getString("review"));
+		btnReview = new JButton(resourceBundle.getString("review"));
 		btnReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				JButton pressedButton = (JButton)e.getSource();
+				if(pressedButton == btnReview) {
+					Reviews_Window rw = new Reviews_Window();
+					rw.setVisible(true);
+				}	
 			}
 		});
 		btnReview.setBounds(290, 281, 100, 25);
