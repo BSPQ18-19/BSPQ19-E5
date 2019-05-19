@@ -52,7 +52,6 @@ public class Favourites extends JPanel {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
 
         setLayout(null);
-        System.out.println("Favourites Locale is " + Locale.getDefault().toString());
 
 		JSONObject filters = new JSONObject();
 		filters.put("user", user);

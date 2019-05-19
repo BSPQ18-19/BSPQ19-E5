@@ -32,14 +32,16 @@ public class Restaurant extends JPanel {
 		initialize_filter();
 	}
 	public void initialize_filter(){
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
 		setBorder(null);
 		setLayout(null);
-		JLabel lblName = new JLabel("Name");
+		JLabel lblName = new JLabel(resourceBundle.getString("Name"));
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblName.setBounds(34, 34, 64, 14);
 		add(lblName);
 
-		JLabel lblLocation = new JLabel("Location");
+		JLabel lblLocation = new JLabel(resourceBundle.getString("location") + ":");
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblLocation.setBounds(34, 85, 64, 14);
 		add(lblLocation);
@@ -54,7 +56,7 @@ public class Restaurant extends JPanel {
 		add(txtLocationfield);
 		txtLocationfield.setColumns(10);
 
-		JLabel lblSpecialty = new JLabel("Specialty");
+		JLabel lblSpecialty = new JLabel(resourceBundle.getString("speciality") + ":");
 		lblSpecialty.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblSpecialty.setBounds(79, 129, 64, 27);
 		add(lblSpecialty);
@@ -87,7 +89,7 @@ public class Restaurant extends JPanel {
 			filters.put("speciality","Innovative");
 		}
 
-		JLabel lblType = new JLabel("Type");
+		JLabel lblType = new JLabel(resourceBundle.getString("type") + ":");
 		lblType.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblType.setBounds(307, 133, 58, 19);
 		add(lblType);

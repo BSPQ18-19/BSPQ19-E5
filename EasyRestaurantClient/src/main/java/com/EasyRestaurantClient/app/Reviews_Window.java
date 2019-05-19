@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ResourceBundle;
 
 public class Reviews_Window extends JFrame implements ActionListener {
 
@@ -38,6 +39,8 @@ public class Reviews_Window extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public Reviews_Window(final String name_of_Restaurant) {
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		reviews_list = reviews.reviews_list(name_of_Restaurant);
@@ -51,12 +54,12 @@ public class Reviews_Window extends JFrame implements ActionListener {
 		contentPane.add(panelPrincipal, BorderLayout.CENTER);
 		panelPrincipal.setLayout(null);
 		
-		JLabel lblListOfReviews = new JLabel("List of reviews:");
+		JLabel lblListOfReviews = new JLabel(resourceBundle.getString("list.of.reviews") + ":");
 		lblListOfReviews.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblListOfReviews.setBounds(54, 19, 140, 25);
 		panelPrincipal.add(lblListOfReviews);
 		
-		JLabel lblComments = new JLabel("Comments:");
+		JLabel lblComments = new JLabel(resourceBundle.getString("comments") + ":");
 		lblComments.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblComments.setBounds(325, 37, 95, 17);
 		panelPrincipal.add(lblComments);
@@ -66,7 +69,7 @@ public class Reviews_Window extends JFrame implements ActionListener {
 		textPaneComments.setEditable(false);
 		panelPrincipal.add(textPaneComments);
 		
-		JLabel lblScore = new JLabel("Score:");
+		JLabel lblScore = new JLabel(resourceBundle.getString("score") + ":");
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblScore.setBounds(325, 247, 54, 17);
 		panelPrincipal.add(lblScore);
@@ -77,7 +80,7 @@ public class Reviews_Window extends JFrame implements ActionListener {
 		textFieldScore.setEditable(false);
 		textFieldScore.setColumns(10);
 		
-		btnAddReview = new JButton("Add Review");
+		btnAddReview = new JButton(resourceBundle.getString("add.review"));
 		btnAddReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JButton pressedButton = (JButton)e.getSource();
