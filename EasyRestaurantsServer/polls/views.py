@@ -160,6 +160,7 @@ def reviews_api(request):
         r = []
         for review in reviews:
             c = {}
+            c['id'] = review.id
             c['date'] = review.date
             c['comments'] = review.comments
             c['score'] = review.score

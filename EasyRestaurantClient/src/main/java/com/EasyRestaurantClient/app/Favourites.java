@@ -15,6 +15,7 @@ public class Favourites extends JPanel {
 	private JTextField score_field;
 	private JTextField speciality_field;
 	private JTextField type_field;
+	private JTextField schedule_field;
 	private JButton btnReview;
 	private String user;
     private  String name_of_Restaurant;
@@ -94,7 +95,7 @@ public class Favourites extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JButton pressedButton = (JButton)e.getSource();
 				if(pressedButton == btnReview) {
-					Reviews_Window rw = new Reviews_Window();
+					Reviews_Window rw = new Reviews_Window(current.getString("name"));
 					rw.setVisible(true);
 				}	
 			}
@@ -107,6 +108,8 @@ public class Favourites extends JPanel {
 		btnCheckMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String menu = current.getString("menu"); // To create menu window
+				Menu menu_window = new Menu(menu);
+				menu_window.setVisible(true);
 			}
 		});
 		btnCheckMenu.setBounds(400, 281, 120, 25);
@@ -165,6 +168,11 @@ public class Favourites extends JPanel {
 //		lblSchedule.setForeground(Color.WHITE);
 		lblSchedule.setBounds(209, 205, 70, 16);
 		add(lblSchedule);
+
+		schedule_field = new JTextField();
+		schedule_field.setBounds(309, 203, 161, 22);
+		add(schedule_field);
+		schedule_field.setColumns(10);
 		
 		score_field = new JTextField();
 		score_field.setBounds(309, 168, 161, 22);
@@ -197,6 +205,7 @@ public class Favourites extends JPanel {
 						speciality_field.setText(explrObject.getString("speciality"));
 						type_field.setText(explrObject.getString("type"));
 						name_field.setText(explrObject.getString("name"));
+						schedule_field.setText(explrObject.getString("schedule"));
 						break;
 					}
 

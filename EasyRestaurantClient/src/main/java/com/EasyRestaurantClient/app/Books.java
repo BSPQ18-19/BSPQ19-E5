@@ -19,6 +19,7 @@ import java.util.ResourceBundle;
 public class Books extends JPanel {
 	private JTextField restaurant_field;
 	private JTextField number_field;
+	private JTextField date_field;
 	private String user;
 	private Reservations reservations = new Reservations();
 	private JSONObject current;
@@ -69,7 +70,7 @@ public class Books extends JPanel {
 		add(lblName);
 		
 		restaurant_field = new JTextField();
-		restaurant_field.setBounds(335, 68, 116, 22);
+		restaurant_field.setBounds(335, 68, 130, 22);
 		restaurant_field.setEditable(false);
 		add(restaurant_field);
 		restaurant_field.setColumns(10);
@@ -81,7 +82,7 @@ public class Books extends JPanel {
 		add(lblLocation);
 		
 		number_field = new JTextField();
-		number_field.setBounds(335, 125, 116, 22);
+		number_field.setBounds(335, 125, 130, 22);
 		add(number_field);
 		number_field.setColumns(10);
 		
@@ -90,6 +91,11 @@ public class Books extends JPanel {
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDate.setBounds(234, 187, 56, 16);
 		add(lblDate);
+
+		date_field = new JTextField();
+		date_field.setBounds(335, 185, 130, 22);
+		add(date_field);
+		date_field.setColumns(10);
 		
 		JButton btnModify = new JButton(resourceBundle.getString("modify"));
 		btnModify.addActionListener(new ActionListener() {
@@ -138,6 +144,7 @@ public class Books extends JPanel {
 						current = explrObject;
 						restaurant_field.setText(explrObject.getString("restaurant"));
 						number_field.setText(""+explrObject.getInt("number_clients"));
+						date_field.setText(explrObject.getString("date"));
 						break;
 					}
 

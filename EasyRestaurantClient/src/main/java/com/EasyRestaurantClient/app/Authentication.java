@@ -34,7 +34,6 @@ public class Authentication {
         final Locale englishLocale = new Locale("en_US");
         final Locale greekLocale = new Locale("el_GR");
         Locale.setDefault(Locale.getDefault());
-//        Locale.setDefault(englishLocale);
         if (Locale.getDefault().equals(greekLocale)) {
             comboBox1.setSelectedItem(item2);
 

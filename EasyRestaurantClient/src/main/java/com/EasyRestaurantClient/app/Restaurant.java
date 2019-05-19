@@ -13,7 +13,8 @@ public class Restaurant extends JPanel {
 	private JTextField txtLocationfield;
 	private JTextField txtDatefield;
 	private JTextField txtScorefield;
-	JSONObject filters =new JSONObject();
+	private JTextField schedule_field;
+	private JSONObject filters =new JSONObject();
 	private JTextField name_field;
 	private JTextField location_field;
 	private JTextField score_field;
@@ -214,7 +215,8 @@ public class Restaurant extends JPanel {
 		JButton btnReview = new JButton(resourceBundle.getString("review"));
 		btnReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				Reviews_Window rw = new Reviews_Window(current.getString("name"));
+				rw.setVisible(true);
 			}
 		});
 		btnReview.setBounds(290, 281, 100, 25);
@@ -225,6 +227,8 @@ public class Restaurant extends JPanel {
 		btnCheckMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String menu = current.getString("menu"); // To create menu window
+				Menu menu_window = new Menu(menu);
+				menu_window.setVisible(true);
 			}
 		});
 		btnCheckMenu.setBounds(400, 281, 120, 25);
@@ -283,6 +287,10 @@ public class Restaurant extends JPanel {
 //		lblSchedule.setForeground(Color.WHITE);
 		lblSchedule.setBounds(209, 205, 70, 16);
 		add(lblSchedule);
+		schedule_field = new JTextField();
+		schedule_field.setBounds(309, 203, 161, 22);
+		add(schedule_field);
+		schedule_field.setColumns(10);
 
 		score_field = new JTextField();
 		score_field.setBounds(309, 168, 161, 22);
@@ -315,6 +323,7 @@ public class Restaurant extends JPanel {
 						speciality_field.setText(explrObject.getString("speciality"));
 						type_field.setText(explrObject.getString("type"));
 						name_field.setText(explrObject.getString("name"));
+						schedule_field.setText(explrObject.getString("schedule"));
 						break;
 					}
 

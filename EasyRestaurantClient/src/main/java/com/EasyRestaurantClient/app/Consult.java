@@ -76,6 +76,7 @@ public class Consult extends JFrame {
 					case 1:
 						f.update();
 					case 2:
+						b.update_list();
 
 				}
 			}

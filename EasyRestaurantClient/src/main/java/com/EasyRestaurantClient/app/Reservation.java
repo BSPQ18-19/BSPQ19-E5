@@ -173,7 +173,7 @@ public class Reservation {
         JFrame frame = new JFrame("My Easy Restaurant");
         this.frame = frame;
         frame.setContentPane(this.reservationPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         RestaurantInput.setText(this.name_Of_Restaurant);
         NameInput.setText(this.user);
@@ -187,7 +187,7 @@ public class Reservation {
         final JFrame myFrame2 = new JFrame();
 
         myFrame2.setVisible(true);
-        myFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myFrame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         myFrame2.setBounds(100, 100, 500, 400);
         myFrame2.setTitle("The Easy Restaurant");
         myFrame2.getContentPane().setLayout(null);
@@ -220,7 +220,7 @@ public class Reservation {
         final JFrame myFrame2 = new JFrame();
 
         myFrame2.setVisible(true);
-        myFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myFrame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         myFrame2.setBounds(100, 100, 500, 400);
         myFrame2.setTitle("My Easy Restaurant");
         myFrame2.getContentPane().setLayout(null);

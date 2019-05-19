@@ -15,32 +15,17 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Create_Review extends JFrame implements ActionListener{
+public class Create_Review extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField textFieldScore;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Create_Review frame = new Create_Review();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private Reviews reviews = new Reviews();
 
 	/**
 	 * Create the frame.
 	 */
-	public Create_Review() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public Create_Review(final String name_of_restaurant, final Reviews_Window r) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 416, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -53,36 +38,31 @@ public class Create_Review extends JFrame implements ActionListener{
 		
 		JLabel lblComments = new JLabel("Comments:");
 		lblComments.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblComments.setBounds(23, 26, 100, 17);
+		lblComments.setBounds(23, 6, 100, 17);
 		panelAddReview.add(lblComments);
 		
-		JTextPane textPaneComments = new JTextPane();
-		textPaneComments.setBounds(23, 56, 338, 122);
+		final JTextPane textPaneComments = new JTextPane();
+		textPaneComments.setBounds(23, 36, 338, 122);
 		panelAddReview.add(textPaneComments);
 		
 		JLabel lblScore = new JLabel("Score:");
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblScore.setBounds(23, 191, 66, 17);
+		lblScore.setBounds(23, 171, 66, 17);
 		panelAddReview.add(lblScore);
 		
 		textFieldScore = new JTextField();
-		textFieldScore.setBounds(76, 191, 116, 22);
+		textFieldScore.setBounds(76, 171, 116, 22);
 		panelAddReview.add(textFieldScore);
 		textFieldScore.setColumns(10);
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				reviews.make_review(name_of_restaurant, textPaneComments.getText(), Double.valueOf(textFieldScore.getText()));
+				r.update(name_of_restaurant);
 			}
 		});
-		btnSubmit.setBounds(238, 205, 97, 25);
+		btnSubmit.setBounds(238, 171, 97, 25);
 		panelAddReview.add(btnSubmit);
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
