@@ -138,22 +138,15 @@ public class UserAuthentication
 
                 logger.info("response content " + reply);
 
-
-                if (!reply.toString().contains("exists")) {
-                    resp = "User created";
-                } else {
-                    resp = "User already exists";
-                }
-            } else if (respCode == 403){
-                resp = "User already exists";
+                resp = "User created";
             } else {
-                resp = "Bad connection";
+                resp = "User already exists";
             }
             logger.info(resp);
             con.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
-            resp = "Bad connection";
+            resp = "User already exists";
         }
         return resp;
     }
