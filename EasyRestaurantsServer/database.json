@@ -1,0 +1,353 @@
+[
+{
+    "model": "polls.restaurant",
+    "pk": 1,
+    "fields": {
+        "name": "Txacoli",
+        "location": "Artxanda",
+        "speciality": "Beef",
+        "menu": "Steak-20;Hamburguer-15;chips-5;",
+        "score": 3.9,
+        "capacity": 100,
+        "schedule": "14:00-17:00/20:00-24:00",
+        "type": "Grill"
+    }
+},
+{
+    "model": "polls.restaurant",
+    "pk": 2,
+    "fields": {
+        "name": "Asador el Puerto",
+        "location": "Castro Urdiales",
+        "speciality": "Fish",
+        "menu": "",
+        "score": 4.5,
+        "capacity": 120,
+        "schedule": "14:00-17:00/20:00-24:00",
+        "type": "Restaurant"
+    }
+},
+{
+    "model": "polls.restaurant",
+    "pk": 3,
+    "fields": {
+        "name": "Mao",
+        "location": "Abando",
+        "speciality": "Sushi",
+        "menu": "",
+        "score": 3.125,
+        "capacity": 80,
+        "schedule": "14:00-17:00/20:00-24:00",
+        "type": "Asiatic"
+    }
+},
+{
+    "model": "polls.restaurant",
+    "pk": 4,
+    "fields": {
+        "name": "El Globo",
+        "location": "Diputacion",
+        "speciality": "Common",
+        "menu": "",
+        "score": 5.0,
+        "capacity": 80,
+        "schedule": "14:00-17:00/20:00-24:00",
+        "type": "Local"
+    }
+},
+{
+    "model": "polls.restaurant",
+    "pk": 5,
+    "fields": {
+        "name": "La Gavilla",
+        "location": "Abando",
+        "speciality": "Dessert",
+        "menu": "",
+        "score": 3.0,
+        "capacity": 100,
+        "schedule": "14:00-17:00/20:00-24:00",
+        "type": "Local"
+    }
+},
+{
+    "model": "polls.reservation",
+    "pk": 1,
+    "fields": {
+        "date": "2019-03-21T16:14:53Z",
+        "number_clients": 3,
+        "comments": "",
+        "restaurant": 1,
+        "user": 2
+    }
+},
+{
+    "model": "polls.reservation",
+    "pk": 7,
+    "fields": {
+        "date": "2019-10-29T18:30:00Z",
+        "number_clients": 15,
+        "comments": "vegan party",
+        "restaurant": 1,
+        "user": 2
+    }
+},
+{
+    "model": "polls.reservation",
+    "pk": 16,
+    "fields": {
+        "date": "2019-01-01T00:00:00Z",
+        "number_clients": 1,
+        "comments": "a",
+        "restaurant": 3,
+        "user": 1
+    }
+},
+{
+    "model": "polls.reservation",
+    "pk": 19,
+    "fields": {
+        "date": "2019-08-01T00:00:00Z",
+        "number_clients": 7,
+        "comments": "",
+        "restaurant": 2,
+        "user": 1
+    }
+},
+{
+    "model": "polls.reservation",
+    "pk": 20,
+    "fields": {
+        "date": "2019-05-18T20:45:00Z",
+        "number_clients": 4,
+        "comments": "Gluten allergic",
+        "restaurant": 1,
+        "user": 1
+    }
+},
+{
+    "model": "polls.reservation",
+    "pk": 21,
+    "fields": {
+        "date": "2019-05-18T20:45:00Z",
+        "number_clients": 4,
+        "comments": "Gluten allergic",
+        "restaurant": 1,
+        "user": 1
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 1,
+    "fields": {
+        "restaurant": 2,
+        "score": 4.0,
+        "comments": "Really good food",
+        "date": "2019-05-06T15:04:40Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 2,
+    "fields": {
+        "restaurant": 1,
+        "score": 4.0,
+        "comments": "Really good food",
+        "date": "2019-05-06T17:21:27.245Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 3,
+    "fields": {
+        "restaurant": 1,
+        "score": 4.0,
+        "comments": "Really good food",
+        "date": "2019-05-07T18:59:29.874Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 4,
+    "fields": {
+        "restaurant": 1,
+        "score": 3.5,
+        "comments": "Good food",
+        "date": "2019-05-07T19:07:22.763Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 5,
+    "fields": {
+        "restaurant": 2,
+        "score": 3.1,
+        "comments": "dsadsadsa",
+        "date": "2019-05-19T12:15:19.907Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 6,
+    "fields": {
+        "restaurant": 2,
+        "score": 2.4,
+        "comments": "dsadasd",
+        "date": "2019-05-19T12:16:09.970Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 7,
+    "fields": {
+        "restaurant": 3,
+        "score": 2.0,
+        "comments": "Good service",
+        "date": "2019-05-19T12:19:12.003Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 8,
+    "fields": {
+        "restaurant": 1,
+        "score": 5.0,
+        "comments": "Good service",
+        "date": "2019-05-22T15:27:54Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 9,
+    "fields": {
+        "restaurant": 1,
+        "score": 3.0,
+        "comments": "Just fine",
+        "date": "2019-05-22T17:28:59.196Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 10,
+    "fields": {
+        "restaurant": 3,
+        "score": 4.0,
+        "comments": "Good sushi",
+        "date": "2019-05-22T17:38:26.809Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 11,
+    "fields": {
+        "restaurant": 3,
+        "score": 3.5,
+        "comments": "Good service.",
+        "date": "2019-05-22T17:39:36.883Z"
+    }
+},
+{
+    "model": "polls.review",
+    "pk": 12,
+    "fields": {
+        "restaurant": 3,
+        "score": 3.0,
+        "comments": "dsadsad",
+        "date": "2019-05-22T17:40:50.918Z"
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$a4Jr4qADQF38$GPuOrsxHAkk80PRawBDDoOTQdg2XNxC5uvsoSIbwnvo=",
+        "last_login": "2019-05-18T16:45:36.483Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-03-31T15:44:44.891Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$bux35L3BYxti$xw1l52ksDwLN73x7QaXLxYKAtLiDhtBO6nibp1E+IoA=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "carlos",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-03-31T16:09:40.095Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "dasdad",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "pepe",
+        "first_name": "Pepe",
+        "last_name": "",
+        "email": "dsad@dsad.da",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-03-31T16:36:32.922Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$yfMHXjwp3diG$H8LGPGhwlnGlisehqVbBzBjzOzYMk72ye1YLiQAvU1Y=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "test",
+        "last_name": "",
+        "email": "test@test.es",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-04-30T11:09:15.104Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "polls.client",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "favourites": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "polls.client",
+    "pk": 2,
+    "fields": {
+        "user": 5,
+        "favourites": []
+    }
+},
+{
+    "model": "polls.client",
+    "pk": 4,
+    "fields": {
+        "user": 7,
+        "favourites": []
+    }
+}
+]

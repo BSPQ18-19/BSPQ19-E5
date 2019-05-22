@@ -26,7 +26,6 @@ public class Authentication {
 
 
     public Authentication() {
-
         ComboItem item1 = new ComboItem("English", "Language1");
         ComboItem item2 = new ComboItem("Greek", "Language2");
         comboBox1.addItem(item1);
@@ -81,6 +80,7 @@ public class Authentication {
                 frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame2.pack();
                 frame2.setVisible(true);
+                frame2.setSize(400,300);
             }
         });
     }
@@ -97,6 +97,7 @@ public class Authentication {
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.setSize(400,300);
         authentication.frame = frame;
     }
 }

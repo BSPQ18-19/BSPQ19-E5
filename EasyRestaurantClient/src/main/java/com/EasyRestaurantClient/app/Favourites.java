@@ -40,12 +40,11 @@ public class Favourites extends JPanel {
 		JSONObject filters = new JSONObject();
 		filters.put("user", user);
 		favourites_list = restaurants.restaurant_list(filters);
-		listModel = new DefaultListModel<>();
+		listModel.clear();
 		for (int i=0;i<favourites_list.length();i++) {
 			JSONObject explrObject = favourites_list.getJSONObject(i);
 			listModel.addElement(explrObject.getString("name"));
 		}
-		list.setModel(listModel);
 	}
 	
 	public void initialize() {

@@ -11,23 +11,9 @@ from polls.forms import *
 from silk.profiling.profiler import silk_profile
 from datetime import datetime
 
-
-## @package Register
-#  API documentation for registering users.
-#
-
 @csrf_exempt
 @silk_profile(name='Registration')
 def register_api(request):
-    """
-    Manages the request to register a user
-
-    Args:
-        request:   Http request.
-
-    Returns:
-        JSon Response
-    """
     if request.method == 'POST':
         data = JSONParser().parse(request)
         if not User.objects.filter(username=data['username']).exists():
@@ -43,23 +29,9 @@ def register_api(request):
         else:
             return JsonResponse("Username already exists", safe=False, status=403)
 
-
-## @package Login
-#  API documentation.
-#
-
 @csrf_exempt
 @silk_profile(name='Login')
 def login_api(request):
-    """
-    Manages the request to login a user
-
-    Args:
-        request:   Http request.
-
-    Returns:
-        JSon Response
-    """
     if request.method == 'POST':
         data = JSONParser().parse(request)
         if User.objects.filter(username=data['username']).exists():
@@ -76,10 +48,6 @@ def login_api(request):
         else:
             return JsonResponse("Invalid user", status=403, safe=False)
 
-
-## @package Restaurants
-#  API documentation.
-#
 @csrf_exempt
 @silk_profile(name='Restaurants')
 def restaurants_api(request):
@@ -160,8 +128,15 @@ def reviews_api(request):
     else:
         data = JSONParser().parse(request)
         try:
+            restaurant = Restaurant.objects.get(name=data['restaurant'])
             new = Review.objects.create(date=datetime.now(), comments=data['comments'], score=data['score'],
-                                        restaurant=Restaurant.objects.get(name=data['restaurant']))
+                                        restaurant=restaurant)
+            all_reviews = Review.objects.all().filter(restaurant=restaurant)
+            score = 0
+            for review in all_reviews:
+                score += review.score
+            restaurant.score = round(score/len(all_reviews), 3)
+            restaurant.save()
             return JsonResponse("Created", safe=False, status=200)
         except:
             return JsonResponse("Incorrect data", safe=False, status=403)

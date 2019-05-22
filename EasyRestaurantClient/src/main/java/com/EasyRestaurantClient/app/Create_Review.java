@@ -62,6 +62,7 @@ public class Create_Review extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				reviews.make_review(name_of_restaurant, textPaneComments.getText(), Double.valueOf(textFieldScore.getText()));
 				r.update(name_of_restaurant);
+				dispose();
 			}
 		});
 		btnSubmit.setBounds(238, 171, 97, 25);

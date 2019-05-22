@@ -38,12 +38,12 @@ public class Restaurant extends JPanel {
 		setLayout(null);
 		JLabel lblName = new JLabel(resourceBundle.getString("Name"));
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblName.setBounds(34, 34, 64, 14);
+		lblName.setBounds(34, 34, 94, 14);
 		add(lblName);
 
 		JLabel lblLocation = new JLabel(resourceBundle.getString("location") + ":");
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblLocation.setBounds(34, 85, 64, 14);
+		lblLocation.setBounds(34, 85, 94, 14);
 		add(lblLocation);
 
 		txtNamefield = new JTextField();
@@ -61,66 +61,45 @@ public class Restaurant extends JPanel {
 		lblSpecialty.setBounds(79, 129, 64, 27);
 		add(lblSpecialty);
 
-		JCheckBox chckbxFastFood = new JCheckBox(resourceBundle.getString("fast.food"));
+		final JCheckBox chckbxFastFood = new JCheckBox(resourceBundle.getString("fast.food"));
 		chckbxFastFood.setBounds(20, 163, 97, 23);
-		if(chckbxFastFood.isSelected()) {
-			filters.put("speciality","Fast Food");
-		}
 		add(chckbxFastFood);
 
-		JCheckBox chckbxCommon = new JCheckBox(resourceBundle.getString("common"));
+		final JCheckBox chckbxCommon = new JCheckBox(resourceBundle.getString("common"));
 		chckbxCommon.setBounds(124, 163, 97, 23);
 		add(chckbxCommon);
-		if(chckbxCommon.isSelected()) {
-			filters.put("speciality","Common");
-		}
 
-		JCheckBox chckbxDessert = new JCheckBox(resourceBundle.getString("dessert"));
+
+		final JCheckBox chckbxDessert = new JCheckBox(resourceBundle.getString("dessert"));
 		chckbxDessert.setBounds(20, 194, 97, 23);
 		add(chckbxDessert);
-		if(chckbxDessert.isSelected()) {
-			filters.put("speciality","Dessert");
-		}
 
-		JCheckBox chckbxInnovative = new JCheckBox(resourceBundle.getString("innovative"));
+
+		final JCheckBox chckbxInnovative = new JCheckBox(resourceBundle.getString("innovative"));
 		chckbxInnovative.setBounds(124, 194, 97, 23);
 		add(chckbxInnovative);
-		if(chckbxInnovative.isSelected()) {
-			filters.put("speciality","Innovative");
-		}
 
 		JLabel lblType = new JLabel(resourceBundle.getString("type") + ":");
 		lblType.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblType.setBounds(307, 133, 58, 19);
 		add(lblType);
 
-		JCheckBox chckbxAsiatic = new JCheckBox(resourceBundle.getString("asiatic"));
+		final JCheckBox chckbxAsiatic = new JCheckBox(resourceBundle.getString("asiatic"));
 		chckbxAsiatic.setBounds(281, 163, 64, 23);
 		add(chckbxAsiatic);
-		if(chckbxAsiatic.isSelected()) {
-			filters.put("type","Asiatic");
-		}
 
-		JCheckBox chckbxItalian = new JCheckBox(resourceBundle.getString("italian"));
+
+		final JCheckBox chckbxItalian = new JCheckBox(resourceBundle.getString("italian"));
 		chckbxItalian.setBounds(281, 194, 64, 23);
 		add(chckbxItalian);
-		if(chckbxItalian.isSelected()) {
-			filters.put("type","Italian");
-		}
 
-		JCheckBox chckbxMexican = new JCheckBox(resourceBundle.getString("mexican"));
+		final JCheckBox chckbxMexican = new JCheckBox(resourceBundle.getString("mexican"));
 		chckbxMexican.setBounds(353, 163, 97, 23);
 		add(chckbxMexican);
-		if(chckbxMexican.isSelected()) {
-			filters.put("type","Mexican");
-		}
 
-		JCheckBox chckbxLocal = new JCheckBox(resourceBundle.getString("local"));
+		final JCheckBox chckbxLocal = new JCheckBox(resourceBundle.getString("local"));
 		chckbxLocal.setBounds(353, 194, 97, 23);
 		add(chckbxLocal);
-		if(chckbxLocal.isSelected()) {
-			filters.put("type","Local");
-		}
 
 		JLabel lblDate = new JLabel(resourceBundle.getString("Date"));
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -143,14 +122,20 @@ public class Restaurant extends JPanel {
 		add(txtScorefield);
 		txtScorefield.setColumns(10);
 
-		JButton btnSearch = new JButton(resourceBundle.getString("search"));
+		final JButton btnSearch = new JButton(resourceBundle.getString("search"));
 		btnSearch.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if (txtNamefield.getText().length() > 0) filters.put("name", txtNamefield.getText());
 				if (txtLocationfield.getText().length() > 0) filters.put("location", txtLocationfield.getText());
-//				filters.put("Date",txtDatefield.getText());
-//				filters.put("Score",txtScorefield.getText());
+				if(chckbxFastFood.isSelected()) filters.put("speciality","Fast+Food");
+				if(chckbxCommon.isSelected()) filters.put("speciality","Common");
+				if(chckbxDessert.isSelected()) filters.put("speciality","Dessert");
+				if(chckbxInnovative.isSelected()) filters.put("speciality","Innovative");
+				if(chckbxAsiatic.isSelected()) filters.put("type","Asiatic");
+				if(chckbxItalian.isSelected()) filters.put("type","Italian");
+				if(chckbxMexican.isSelected()) filters.put("type","Mexican");
+				if(chckbxLocal.isSelected()) filters.put("type","Local");
 				removeAll();
 				initialize_list();
 				revalidate();

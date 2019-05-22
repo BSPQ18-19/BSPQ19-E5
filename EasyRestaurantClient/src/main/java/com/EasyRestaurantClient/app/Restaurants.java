@@ -1,10 +1,7 @@
 package com.EasyRestaurantClient.app;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import sun.rmi.runtime.Log;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;

@@ -1,9 +1,8 @@
 package com.EasyRestaurantClient.app;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import javax.swing.*;
 import java.awt.Font;
@@ -39,12 +38,11 @@ public class Books extends JPanel {
 
 	public void update_list(){
 		reservations_list = reservations.reservation_list(filters);
-		listModel = new DefaultListModel<>();
+		listModel.clear();
 		for (int i=0;i<reservations_list.length();i++) {
 			JSONObject explrObject = reservations_list.getJSONObject(i);
 			listModel.addElement(explrObject.getString("date")+"-"+String.valueOf(explrObject.getInt("id")));
 		}
-		list.setModel(listModel);
 	}
 	
 	public void initialize() {
