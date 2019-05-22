@@ -1,5 +1,6 @@
 matrix:
   include:
+    - dist: xenial
     language: python # => 1
 
     python: # => 2
@@ -24,6 +25,7 @@ matrix:
       - cd EasyRestaurantsServer
       - python manage.py test
 
+    - dist: xenial
     language: java
     jdk: openjdk8
     services: # => 3
