@@ -1,52 +1,58 @@
 matrix:
   include:
     - dist: xenial
-    language: python # => 1
+      language: python # => 1
 
-    python: # => 2
-      - "3.6"
+      python: # => 2
+        - "3.6"
 
-    services: # => 3
-      - mysql
+      services: # => 3
+        - mysql
 
-    env: # => 4
-      -DJANGO=2.2 DB=mysql
+      env: # => 4
+        -DJANGO=2.2 DB=mysql
 
-    install: # => 5
-      - pip install -r EasyRestaurantsServer/requirements.txt
+      install: # => 5
+        - pip install -r EasyRestaurantsServer/requirements.txt
 
-    before_script: # => 6
-      - mysql -u root -e "CREATE DATABASE easyrestaurants CHARACTER SET UTF8;"
-      - mysql -u root -e "CREATE USER 'test'@'%' IDENTIFIED BY 'test';"
-      - mysql -u root -e "GRANT ALL PRIVILEGES ON *.* to 'test'@'%';"
-      - mysql -u root -e "FLUSH PRIVILEGES"
+      before_script: # => 6
+        - mysql -u root -e "CREATE DATABASE easyrestaurants CHARACTER SET UTF8;"
+        - mysql -u root -e "CREATE USER 'test'@'%' IDENTIFIED BY 'test';"
+        - mysql -u root -e "GRANT ALL PRIVILEGES ON *.* to 'test'@'%';"
+        - mysql -u root -e "FLUSH PRIVILEGES"
 
-    script: # => 7
-      - cd EasyRestaurantsServer
-      - python manage.py test
+      script: # => 7
+        - cd EasyRestaurantsServer
+        - python manage.py test
 
     - dist: xenial
-    language: java
-    jdk: openjdk8
-    services: # => 3
-      - mysql
+      language: java
+      jdk: openjdk8
+      services: # => 3
+        - mysql
 
-    before_script:
-      - sudo apt update
-      - sudo apt install -y python3 python3-pip
-      - cd EasyRestaurantsServer
-      - sudo pip3 install --upgrade pip
-      - sudo pip3 install setuptools
-      - sudo pip3 install -r requirements.txt
-      - mysql -u root -e "CREATE DATABASE easyrestaurants CHARACTER SET UTF8;"
-      - mysql -u root -e "CREATE USER 'test'@'%' IDENTIFIED BY 'test';"
-      - mysql -u root -e "GRANT ALL PRIVILEGES ON *.* to 'test'@'%';"
-      - mysql -u root -e "FLUSH PRIVILEGES"
-      - python3 manage.py migrate
-      - python3 manage.py loaddata database.json
-      - python3 manage.py runserver 0.0.0.0:8000 &> /dev/null &
-      - cd ..
-      - cd EasyRestaurantClient
-      - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-    script:
-      - mvn test -B
+      before_script:
+        - sudo apt update
+        - sudo apt install -y python3 python3-pip
+        - cd EasyRestaurantsServer
+        - sudo pip3 install --upgrade pip
+        - sudo pip3 install setuptools
+        - sudo pip3 install -r requirements.txt
+        - mysql -u root -e "CREATE DATABASE easyrestaurants CHARACTER SET UTF8;"
+        - mysql -u root -e "CREATE USER 'test'@'%' IDENTIFIED BY 'test';"
+        - mysql -u root -e "GRANT ALL PRIVILEGES ON *.* to 'test'@'%';"
+        - mysql -u root -e "FLUSH PRIVILEGES"
+        - python3 manage.py migrate
+        - python3 manage.py loaddata database.json
+        - python3 manage.py runserver 0.0.0.0:8000 &> /dev/null &
+        - cd ..
+        - cd EasyRestaurantClient
+        - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      script:
+        - mvn test -B
+
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
