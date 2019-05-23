@@ -14,10 +14,15 @@ import java.awt.event.ActionEvent;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-
+/**
+ * The Reservation class implements the part in the application necessary
+ * to use for making a reservation.
+ *
+ *
+ */
 public class Reservation {
     final static String DATE_FORMAT = "yyyy-MM-dd";
-    private String user;
+    private String user; /**< name of user  */
     private String name_Of_Restaurant;
     private JPanel reservationPanel;
     private JButton cancelButton;
@@ -32,7 +37,6 @@ public class Reservation {
     private JComboBox HourInput;
     private JComboBox MinuteInput;
     private JComboBox GuestsInput;
-    private JTextPane numofguests;
     private JFrame frame;
 
 
@@ -41,15 +45,14 @@ public class Reservation {
 
     public Reservation(String user, String name_Of_Restaurant) {
 
-        this.user = user;
-        this. name_Of_Restaurant = name_Of_Restaurant;
+        this.user = user; /**< updating the User variable so we know who is our current user*/
+        this. name_Of_Restaurant = name_Of_Restaurant; /**< restaurant to be reserved */
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //check if date has a correct form
                 String date = YearInput.getSelectedItem().toString()+"-"+MonthInput.getSelectedItem().toString()+"-"+DayInput.getSelectedItem().toString();
                 String daytime = date+" "+HourInput.getSelectedItem().toString()+":"+MinuteInput.getSelectedItem().toString();
-                System.out.println(daytime);
                 String str_number_clients = (GuestsInput.getSelectedItem().toString());
                 int number_clients = Integer.parseInt(str_number_clients);
                 final boolean response = make_reservation(NameInput.getText(), RestaurantInput.getText(),daytime, number_clients, CommentInput.getText());
@@ -162,11 +165,16 @@ public class Reservation {
         return response;
     }
 
+
+
+    //! A function about the graphic interface of the reservation.
+    /*!
+    Putting on the frame the designed form panel and adding the titles.
+
+    */
+
     public void makeResInterface(){
 
-//        Locale englishLocale = new Locale("en_US");
-//        Locale greekLocale = new Locale("el_GR");
-//        Locale.setDefault(englishLocale);
 
         System.out.println("Reservation Locale is " +Locale.getDefault().toString());
 
@@ -181,6 +189,9 @@ public class Reservation {
 
 
     }
+
+    //! Negative respond appears when the reservation can not proceed.
+
     public static void negRespondMessage() {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
 
@@ -213,7 +224,7 @@ public class Reservation {
 
     }
 
-
+    //! Positive respond appears when the reservation is made.
     public static void posRespondMessage() {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
 
