@@ -6,7 +6,6 @@ import org.json.JSONObject;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Favourites extends JPanel {
@@ -23,7 +22,7 @@ public class Favourites extends JPanel {
 	private JSONArray favourites_list;
 	private DefaultListModel<String> listModel;
 	private JList list;
-	private Restaurants restaurants = new Restaurants();
+	private Restaurants_API restaurantsAPI = new Restaurants_API();
 
 
 
@@ -39,7 +38,7 @@ public class Favourites extends JPanel {
 	public void update(){
 		JSONObject filters = new JSONObject();
 		filters.put("user", user);
-		favourites_list = restaurants.restaurant_list(filters);
+		favourites_list = restaurantsAPI.restaurant_list(filters);
 		listModel.clear();
 		for (int i=0;i<favourites_list.length();i++) {
 			JSONObject explrObject = favourites_list.getJSONObject(i);
@@ -54,7 +53,7 @@ public class Favourites extends JPanel {
 
 		JSONObject filters = new JSONObject();
 		filters.put("user", user);
-		favourites_list = restaurants.restaurant_list(filters);
+		favourites_list = restaurantsAPI.restaurant_list(filters);
 
 		JLabel lblListOfFavourites = new JLabel(resourceBundle.getString("list.of.favourites"));
 		lblListOfFavourites.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -67,7 +66,7 @@ public class Favourites extends JPanel {
 		btnFavourite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				restaurants.add_favourite(current.getInt("id"), user);
+				restaurantsAPI.add_favourite(current.getInt("id"), user);
 				update();
 			}
 		});

@@ -151,8 +151,8 @@ public class Restaurant extends JPanel {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
 
 		setLayout(null);
-		final Restaurants restaurants = new Restaurants();
-		final JSONArray favourites_list = restaurants.restaurant_list(filters);
+		final Restaurants_API restaurantsAPI = new Restaurants_API();
+		final JSONArray favourites_list = restaurantsAPI.restaurant_list(filters);
 
 		JButton btnBack = new JButton(resourceBundle.getString("back"));
 		btnBack.addMouseListener(new MouseAdapter() {
@@ -172,7 +172,7 @@ public class Restaurant extends JPanel {
 		btnFavourite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				restaurants.add_favourite(current.getInt("id"), user);
+				restaurantsAPI.add_favourite(current.getInt("id"), user);
 			}
 		});
 		btnFavourite.setBounds(420, 0, 90, 23);

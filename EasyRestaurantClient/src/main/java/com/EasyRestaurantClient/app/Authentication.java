@@ -1,11 +1,14 @@
 package com.EasyRestaurantClient.app;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
 
+
+/**
+ * Window for user authentication
+ */
 public class Authentication {
     private JTabbedPane tabbedPane1;
     private JTextField login_username;
@@ -43,8 +46,8 @@ public class Authentication {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserAuthentication userAuthentication = new UserAuthentication();
-                String result = userAuthentication.register(register_username.getText(), register_pass.getText(), name.getText(), email.getText());
+                UserAuthentication_API userAuthenticationAPI = new UserAuthentication_API();
+                String result = userAuthenticationAPI.register(register_username.getText(), register_pass.getText(), name.getText(), email.getText());
                 reg_response.setText(result);
                 JOptionPane.showMessageDialog(tabbedPane1, result);
             }
@@ -52,8 +55,8 @@ public class Authentication {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserAuthentication userAuthentication = new UserAuthentication();
-                String result = userAuthentication.login(login_username.getText(), login_pass.getText());
+                UserAuthentication_API userAuthenticationAPI = new UserAuthentication_API();
+                String result = userAuthenticationAPI.login(login_username.getText(), login_pass.getText());
                 response.setText(result);
                 if (result.equals("Correct")){
                     frame.dispose();

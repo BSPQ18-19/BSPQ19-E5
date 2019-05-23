@@ -12,7 +12,6 @@ import java.awt.Panel;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Books extends JPanel {
@@ -20,7 +19,7 @@ public class Books extends JPanel {
 	private JTextField number_field;
 	private JTextField date_field;
 	private String user;
-	private Reservations reservations = new Reservations();
+	private Reservations_API reservationsAPI = new Reservations_API();
 	private JSONObject current;
 	private JSONArray reservations_list;
 	private DefaultListModel<String> listModel;
@@ -37,7 +36,7 @@ public class Books extends JPanel {
 	}
 
 	public void update_list(){
-		reservations_list = reservations.reservation_list(filters);
+		reservations_list = reservationsAPI.reservation_list(filters);
 		listModel.clear();
 		for (int i=0;i<reservations_list.length();i++) {
 			JSONObject explrObject = reservations_list.getJSONObject(i);
@@ -53,7 +52,7 @@ public class Books extends JPanel {
 		setLayout(null);
 		filters = new JSONObject();
 		filters.put("user", user);
-		reservations_list = reservations.reservation_list(filters);
+		reservations_list = reservationsAPI.reservation_list(filters);
 
 		JLabel lblListOfBooks = new JLabel(resourceBundle.getString("list.of.books"));
 		lblListOfBooks.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -99,7 +98,7 @@ public class Books extends JPanel {
 		btnModify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = String.valueOf(current.getInt("id"));
-				reservations.update_reservation("2019-04-12 23:00", Integer.parseInt(number_field.getText()), id);
+				reservationsAPI.update_reservation("2019-04-12 23:00", Integer.parseInt(number_field.getText()), id);
 				update_list();
 			}
 		});
@@ -110,7 +109,7 @@ public class Books extends JPanel {
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = String.valueOf(current.getInt("id"));
-				reservations.remove_reservation(id);
+				reservationsAPI.remove_reservation(id);
 				update_list();
 			}
 		});

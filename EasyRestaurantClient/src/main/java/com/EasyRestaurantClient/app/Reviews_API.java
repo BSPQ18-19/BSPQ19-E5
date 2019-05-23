@@ -1,37 +1,91 @@
 package com.EasyRestaurantClient.app;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Logger;
 
-import org.json.JSONObject;
-
-import javax.jws.soap.SOAPBinding;
 
 /**
- * Hello world!
- *
+ * Request to the API for reviews management
  */
-public class UserAuthentication
-{
-    private static Logger logger = Logger.getLogger(UserAuthentication.class.getName());
+public class Reviews_API {
+
+    private static Logger logger = Logger.getLogger(Reviews_API.class.getName());
+
+    static public void main(String[] args) {
+        Reviews_API reviewsAPI = new Reviews_API();
+        JSONArray test = reviewsAPI.reviews_list("Txacoli");
+        reviewsAPI.make_review("Txacoli", "Good food", 3.5);
+    }
 
     /**
-     * Tries to authenticate the user on the server
-     * @param username Username of the client
-     * @param password Password of the client
-     * @return Correct if there hasn't been any problems
+     * Gets list of reviews
+     * @param restaurant Restaurant to get the reviews
+     * @return The list of reviews in a JSONArray format
      */
-    String login(final String username, final String password) {
+    public JSONArray reviews_list(String restaurant){
+        InputStream in = null;
+        String url;
+        String reply = "";
+        JSONArray jsonArray;
+        try {
+            url = "http://127.0.0.1:8000/reviews?restaurant="+restaurant.replaceAll(" ", "+");
+            logger.info(url);
+            URL object = new URL(url);
+
+            HttpURLConnection con = (HttpURLConnection) object.openConnection();
+            con.setRequestProperty("Content-Type", "application-filters");
+            con.setRequestMethod("GET");
+            con.setDoOutput(true);
+
+            int respCode = con.getResponseCode();
+            logger.info("response code " + respCode);
+
+            if (respCode == HttpURLConnection.HTTP_OK) {
+                String line;
+                in = con.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                while ((line = reader.readLine()) != null) {
+                    reply += line;
+                }
+
+                reader.close();
+                in.close();
+
+                logger.info("response content " + reply);
+                jsonArray = new JSONArray(reply);
+
+            } else {
+                logger.info("Bad conenction");
+                return null;
+            }
+            con.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return jsonArray;
+    }
+
+    /**
+     * Creates a review.
+     * @param restaurant Selected restaurant for the review.
+     * @param comments Comments related to the review.
+     * @param score Score of the restaurant.
+     * @return True or False deepending if the creation was succesful.
+     */
+    public Boolean make_review(String restaurant, String comments, Double score){
         InputStream in = null;
         OutputStream out = null;
+        Boolean response = true;
         String reply = "";
 
-        String resp = "Incorrect";
-
         try {
-            String url = "http://127.0.0.1:8000/login/";
+            String url = "http://127.0.0.1:8000/reviews/";
             URL object = new URL(url);
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
@@ -40,8 +94,9 @@ public class UserAuthentication
             con.setDoOutput(true);
 
             JSONObject json = new JSONObject();
-            json.put("username", username);
-            json.put("password", password);
+            json.put("restaurant", restaurant);
+            json.put("score", score);
+            json.put("comments", comments);
 
             out = con.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
@@ -67,88 +122,15 @@ public class UserAuthentication
 
                 logger.info("response content " + reply);
 
-
-                if (!reply.toString().contains("Invalid")) {
-                    resp = "Correct";
-                } else {
-                    resp = "Incorrect";
-                }
-
+                response = !reply.contains("Wrong");
             } else {
-                resp = "Incorrect";
+                response = false;
             }
-            logger.info(resp);
             con.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return resp;
+        return response;
     }
-
-    /**
-     * Tries to register a new client
-     * @param username Username of the client
-     * @param password Password of the client
-     * @param name Name of the client
-     * @param email Email of the client
-     * @return User created if everything went fine
-     */
-    String register(String username, String password, String name, String email){
-        InputStream in = null;
-        OutputStream out = null;
-        String reply = "";
-
-        String resp = "Incorrect";
-
-        try {
-            String url = "http://127.0.0.1:8000/register/";
-            URL object = new URL(url);
-
-            HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setRequestProperty("Content-Type", "application-filters");
-            con.setRequestMethod("POST");
-            con.setDoOutput(true);
-
-            JSONObject json = new JSONObject();
-            json.put("username", username);
-            json.put("password", password);
-            json.put("name", name);
-            json.put("email", email);
-
-            out = con.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
-            writer.write(json.toString());
-            writer.flush();
-            writer.close();
-            out.close();
-
-            int respCode = con.getResponseCode();
-            logger.info("response code " + respCode);
-
-            if (respCode == HttpURLConnection.HTTP_OK) {
-                String line;
-                in = con.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                while ((line = reader.readLine()) != null) {
-                    reply += line;
-                }
-
-                reader.close();
-                in.close();
-
-                logger.info("response content " + reply);
-
-                resp = "User created";
-            } else {
-                resp = "User already exists";
-            }
-            logger.info(resp);
-            con.disconnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-            resp = "User already exists";
-        }
-        return resp;
-    }
-
 }

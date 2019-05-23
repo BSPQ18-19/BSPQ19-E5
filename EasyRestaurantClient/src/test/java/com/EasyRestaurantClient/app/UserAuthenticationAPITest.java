@@ -11,9 +11,9 @@ import org.junit.Test;
 
 
 /**
- * Unit test for simple UserAuthentication.
+ * Unit test for simple UserAuthentication_API.
  */
-public class UserAuthenticationTest
+public class UserAuthenticationAPITest
 {
     /**
      * Test the login with a user that doesn't exist and with an existing one
@@ -24,11 +24,11 @@ public class UserAuthenticationTest
     @PerfTest(invocations = 50, threads = 2)
     @Required(max=11000, median = 4500)
     public void loginTest(){
-        UserAuthentication userAuthentication = new UserAuthentication();
-        String result = userAuthentication.login("as","as");
+        UserAuthentication_API userAuthenticationAPI = new UserAuthentication_API();
+        String result = userAuthenticationAPI.login("as","as");
         assertEquals("Incorrect", result);
 
-        String result2 = userAuthentication.login("carlos","numero1234");
+        String result2 = userAuthenticationAPI.login("carlos","numero1234");
         assertEquals("Correct", result2);
     }
 
@@ -40,11 +40,11 @@ public class UserAuthenticationTest
     @PerfTest(invocations = 10, threads = 10)
     @Required(max = 11000, median=4500)
     public void registerRest(){
-        UserAuthentication userAuthentication = new UserAuthentication();
+        UserAuthentication_API userAuthenticationAPI = new UserAuthentication_API();
 
-        String result2 = userAuthentication.register("test", "dasds", "test", "test@test.es");
+        String result2 = userAuthenticationAPI.register("test", "dasds", "test", "test@test.es");
         if (result2.equals("User created")){
-            result2 = userAuthentication.register("test", "dasds", "test", "test@test.es");
+            result2 = userAuthenticationAPI.register("test", "dasds", "test", "test@test.es");
             assertEquals("User already exists", result2);
         } else {
             assertEquals("User already exists", result2);

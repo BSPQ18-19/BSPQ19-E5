@@ -22,11 +22,11 @@ public class Reviews_Window extends JFrame implements ActionListener {
 	private JSONArray reviews_list;
 	private DefaultListModel<String> listModel = new DefaultListModel<>();
 	private JList list;
-	private Reviews reviews = new Reviews();
+	private Reviews_API reviewsAPI = new Reviews_API();
 
 	public void update(String restaurant){
 		JSONObject filters = new JSONObject();
-		reviews_list = reviews.reviews_list(restaurant);
+		reviews_list = reviewsAPI.reviews_list(restaurant);
 		listModel = new DefaultListModel<>();
 		for (int i=0;i<reviews_list.length();i++) {
 			JSONObject explrObject = reviews_list.getJSONObject(i);
@@ -43,7 +43,7 @@ public class Reviews_Window extends JFrame implements ActionListener {
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		reviews_list = reviews.reviews_list(name_of_Restaurant);
+		reviews_list = reviewsAPI.reviews_list(name_of_Restaurant);
 		setBounds(100, 100, 582, 440);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

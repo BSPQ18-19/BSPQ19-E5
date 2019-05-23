@@ -1,7 +1,6 @@
 package com.EasyRestaurantClient.app;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,7 +10,6 @@ import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
@@ -20,7 +18,7 @@ public class Create_Review extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField textFieldScore;
-	private Reviews reviews = new Reviews();
+	private Reviews_API reviewsAPI = new Reviews_API();
 
 	/**
 	 * Create the frame.
@@ -60,7 +58,7 @@ public class Create_Review extends JFrame{
 		JButton btnSubmit = new JButton(resourceBundle.getString("submit"));
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				reviews.make_review(name_of_restaurant, textPaneComments.getText(), Double.valueOf(textFieldScore.getText()));
+				reviewsAPI.make_review(name_of_restaurant, textPaneComments.getText(), Double.valueOf(textFieldScore.getText()));
 				r.update(name_of_restaurant);
 				dispose();
 			}

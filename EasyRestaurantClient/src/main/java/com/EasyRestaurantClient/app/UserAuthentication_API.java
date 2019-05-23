@@ -1,75 +1,35 @@
 package com.EasyRestaurantClient.app;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Logger;
 
-public class Reviews {
+import org.json.JSONObject;
 
-    private static Logger logger = Logger.getLogger(Reviews.class.getName());
+/**
+ * Request to the API for login and registration
+ *
+ */
+public class UserAuthentication_API
+{
+    private static Logger logger = Logger.getLogger(UserAuthentication_API.class.getName());
 
-    static public void main(String[] args) {
-        Reviews reviews = new Reviews();
-        JSONArray test = reviews.reviews_list("Txacoli");
-        reviews.make_review("Txacoli", "Good food", 3.5);
-    }
-
-    JSONArray reviews_list(String restaurant){
-        InputStream in = null;
-        String url;
-        String reply = "";
-        JSONArray jsonArray;
-        try {
-            url = "http://127.0.0.1:8000/reviews?restaurant="+restaurant.replaceAll(" ", "+");
-            logger.info(url);
-            URL object = new URL(url);
-
-            HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setRequestProperty("Content-Type", "application-filters");
-            con.setRequestMethod("GET");
-            con.setDoOutput(true);
-
-            int respCode = con.getResponseCode();
-            logger.info("response code " + respCode);
-
-            if (respCode == HttpURLConnection.HTTP_OK) {
-                String line;
-                in = con.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                while ((line = reader.readLine()) != null) {
-                    reply += line;
-                }
-
-                reader.close();
-                in.close();
-
-                logger.info("response content " + reply);
-                jsonArray = new JSONArray(reply);
-
-            } else {
-                logger.info("Bad conenction");
-                return null;
-            }
-            con.disconnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        return jsonArray;
-    }
-
-    Boolean make_review(String restaurant, String comments, Double score){
+    /**
+     * Tries to authenticate the user on the server
+     * @param username Username of the client
+     * @param password Password of the client
+     * @return Correct if there hasn't been any problems
+     */
+    public String login(final String username, final String password) {
         InputStream in = null;
         OutputStream out = null;
-        Boolean response = true;
         String reply = "";
 
+        String resp = "Incorrect";
+
         try {
-            String url = "http://127.0.0.1:8000/reviews/";
+            String url = "http://127.0.0.1:8000/login/";
             URL object = new URL(url);
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
@@ -78,9 +38,8 @@ public class Reviews {
             con.setDoOutput(true);
 
             JSONObject json = new JSONObject();
-            json.put("restaurant", restaurant);
-            json.put("score", score);
-            json.put("comments", comments);
+            json.put("username", username);
+            json.put("password", password);
 
             out = con.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
@@ -106,15 +65,88 @@ public class Reviews {
 
                 logger.info("response content " + reply);
 
-                response = !reply.contains("Wrong");
+
+                if (!reply.toString().contains("Invalid")) {
+                    resp = "Correct";
+                } else {
+                    resp = "Incorrect";
+                }
+
             } else {
-                response = false;
+                resp = "Incorrect";
             }
+            logger.info(resp);
             con.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
-        return response;
+        return resp;
     }
+
+    /**
+     * Tries to register a new client
+     * @param username Username of the client
+     * @param password Password of the client
+     * @param name Name of the client
+     * @param email Email of the client
+     * @return User created if everything went fine
+     */
+    public String register(String username, String password, String name, String email){
+        InputStream in = null;
+        OutputStream out = null;
+        String reply = "";
+
+        String resp = "Incorrect";
+
+        try {
+            String url = "http://127.0.0.1:8000/register/";
+            URL object = new URL(url);
+
+            HttpURLConnection con = (HttpURLConnection) object.openConnection();
+            con.setRequestProperty("Content-Type", "application-filters");
+            con.setRequestMethod("POST");
+            con.setDoOutput(true);
+
+            JSONObject json = new JSONObject();
+            json.put("username", username);
+            json.put("password", password);
+            json.put("name", name);
+            json.put("email", email);
+
+            out = con.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+            writer.write(json.toString());
+            writer.flush();
+            writer.close();
+            out.close();
+
+            int respCode = con.getResponseCode();
+            logger.info("response code " + respCode);
+
+            if (respCode == HttpURLConnection.HTTP_OK) {
+                String line;
+                in = con.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                while ((line = reader.readLine()) != null) {
+                    reply += line;
+                }
+
+                reader.close();
+                in.close();
+
+                logger.info("response content " + reply);
+
+                resp = "User created";
+            } else {
+                resp = "User already exists";
+            }
+            logger.info(resp);
+            con.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+            resp = "User already exists";
+        }
+        return resp;
+    }
+
 }
