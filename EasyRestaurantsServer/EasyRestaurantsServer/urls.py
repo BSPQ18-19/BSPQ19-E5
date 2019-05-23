@@ -10,5 +10,9 @@ urlpatterns = [
     url(r'^login/', views.login_api, name="login"),
     url(r'^restaurants/', views.restaurants_api, name="restaurant"),
     url(r'^reservations/', views.reservations_api, name="reservation"),
+    url(r'^reviews/', views.reviews_api, name="review"),
+    url(r'^remove/reservations/', views.delete_reservation, name="remove_reservation"),
+    url(r'^update/reservations/', views.update_reservation, name="update_reservation"),
+    url(r'^favourite/', views.make_favourite, name="favourite"),
 ]
 urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]

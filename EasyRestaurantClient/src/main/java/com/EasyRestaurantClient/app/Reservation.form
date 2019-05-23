@@ -34,6 +34,7 @@
           </grid>
         </constraints>
         <properties>
+          <editable value="false"/>
           <text value=""/>
         </properties>
       </component>
@@ -44,7 +45,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value=""/>
+          <text value="" noi18n="true"/>
         </properties>
       </component>
       <component id="c235" class="javax.swing.JTextArea" binding="dayTextArea" default-binding="true">

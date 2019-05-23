@@ -1,132 +1,234 @@
 package com.EasyRestaurantClient.app;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import java.awt.Color;
-import java.awt.Panel;
-import java.awt.BorderLayout;
-import java.awt.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ResourceBundle;
 
 public class Favourites extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField name_field;
+	private JTextField location_field;
+	private JTextField score_field;
+	private JTextField speciality_field;
+	private JTextField type_field;
+	private JTextField schedule_field;
+	private JButton btnReview;
+	private String user;
+    private  String name_of_Restaurant;
+    private JSONObject current;
+	private JSONArray favourites_list;
+	private DefaultListModel<String> listModel;
+	private JList list;
+	private Restaurants_API restaurantsAPI = new Restaurants_API();
 
-	/**
+
+
+    /**
 	 * Create the panel.
 	 */
-	public Favourites() {
+	public Favourites(String user) {
 //		setBackground(Color.DARK_GRAY);
+		this.user = user;
 		initialize();
+	}
+
+	public void update(){
+		JSONObject filters = new JSONObject();
+		filters.put("user", user);
+		favourites_list = restaurantsAPI.restaurant_list(filters);
+		listModel.clear();
+		for (int i=0;i<favourites_list.length();i++) {
+			JSONObject explrObject = favourites_list.getJSONObject(i);
+			listModel.addElement(explrObject.getString("name"));
+		}
 	}
 	
 	public void initialize() {
-		setLayout(null);
-		
-		JLabel lblListOfFavourites = new JLabel("List of favourites:");
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
+        setLayout(null);
+
+		JSONObject filters = new JSONObject();
+		filters.put("user", user);
+		favourites_list = restaurantsAPI.restaurant_list(filters);
+
+		JLabel lblListOfFavourites = new JLabel(resourceBundle.getString("list.of.favourites"));
 		lblListOfFavourites.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblListOfFavourites.setForeground(Color.WHITE);
 //		lblListOfFavourites.setBackground(Color.WHITE);
 		lblListOfFavourites.setBounds(26, 30, 119, 16);
 		add(lblListOfFavourites);
-		
-		JButton btnNewButton = new JButton("Book");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+
+		JButton btnFavourite = new JButton(resourceBundle.getString("delete"));
+		btnFavourite.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				restaurantsAPI.add_favourite(current.getInt("id"), user);
+				update();
 			}
 		});
-		btnNewButton.setBounds(178, 281, 70, 25);
-		add(btnNewButton);
+		btnFavourite.setBounds(420, 0, 90, 23);
+		add(btnFavourite);
 		
-		JButton btnReview = new JButton("Review");
+		JButton bookButton = new JButton(resourceBundle.getString("book"));
+        bookButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Reservation res = new Reservation(user,name_of_Restaurant);
+                res.makeResInterface();
+            }
+        });
+//		bookButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+		bookButton.setBounds(178, 281, 100, 25);
+		add(bookButton);
+		
+		btnReview = new JButton(resourceBundle.getString("review"));
 		btnReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JButton pressedButton = (JButton)e.getSource();
+				if(pressedButton == btnReview) {
+					Reviews_Window rw = new Reviews_Window(current.getString("name"));
+					rw.setVisible(true);
+				}	
 			}
 		});
-		btnReview.setBounds(260, 281, 79, 25);
+		btnReview.setBounds(290, 281, 100, 25);
 		add(btnReview);
 		
-		JButton btnCheckMenu = new JButton("Check Menu");
+		JButton btnCheckMenu = new JButton(resourceBundle.getString("check.menu"));
 		btnCheckMenu.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCheckMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String menu = current.getString("menu"); // To create menu window
+				Menu menu_window = new Menu(menu);
+				menu_window.setVisible(true);
 			}
 		});
-		btnCheckMenu.setBounds(351, 281, 119, 25);
+		btnCheckMenu.setBounds(400, 281, 120, 25);
 		add(btnCheckMenu);
 		
-		JLabel lblNmae = new JLabel("Name:");
+		final JLabel lblNmae = new JLabel(resourceBundle.getString("Name"));
 		lblNmae.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblNmae.setForeground(Color.WHITE);
 		lblNmae.setBounds(209, 30, 56, 16);
 		add(lblNmae);
 		
-		JLabel lblLocation = new JLabel("Location:");
+		final JLabel lblLocation = new JLabel(resourceBundle.getString("location") + ":");
 		lblLocation.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblLocation.setForeground(Color.WHITE);
 		lblLocation.setBounds(209, 65, 70, 16);
 		add(lblLocation);
 		
-		JLabel lblSpeciality = new JLabel("Speciality:");
+		final JLabel lblSpeciality = new JLabel(resourceBundle.getString("speciality") + ":");
 		lblSpeciality.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblSpeciality.setForeground(Color.WHITE);
 		lblSpeciality.setBounds(209, 100, 70, 16);
 		add(lblSpeciality);
 		
-		textField = new JTextField();
-		textField.setBounds(309, 28, 161, 22);
-		add(textField);
-		textField.setColumns(10);
+		name_field = new JTextField();
+		name_field.setBounds(309, 28, 161, 22);
+		add(name_field);
+		name_field.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(309, 63, 161, 22);
-		add(textField_1);
-		textField_1.setColumns(10);
+		location_field = new JTextField();
+		location_field.setBounds(309, 63, 161, 22);
+		add(location_field);
+		location_field.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Type:");
+		JLabel lblNewLabel = new JLabel(resourceBundle.getString("type") + ":");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(209, 135, 56, 16);
 		add(lblNewLabel);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(309, 98, 103, 22);
-		add(comboBox);
+		speciality_field = new JTextField();
+		speciality_field.setBounds(309, 98, 103, 22);
+		add(speciality_field);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(309, 133, 103, 22);
-		add(comboBox_1);
+		type_field = new JTextField();
+		type_field.setBounds(309, 133, 103, 22);
+		add(type_field);
 		
-		JLabel lblScore = new JLabel("Score:");
+		final JLabel lblScore = new JLabel(resourceBundle.getString("score") + ":");
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblScore.setForeground(Color.WHITE);
 		lblScore.setBounds(209, 170, 56, 16);
 		add(lblScore);
 		
-		JLabel lblSchedule = new JLabel("Schedule:");
+		JLabel lblSchedule = new JLabel(resourceBundle.getString("schedule") + ":");
 		lblSchedule.setFont(new Font("Tahoma", Font.PLAIN, 14));
 //		lblSchedule.setForeground(Color.WHITE);
 		lblSchedule.setBounds(209, 205, 70, 16);
 		add(lblSchedule);
+
+		schedule_field = new JTextField();
+		schedule_field.setBounds(309, 203, 161, 22);
+		add(schedule_field);
+		schedule_field.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(309, 168, 161, 22);
-		add(textField_2);
-		textField_2.setColumns(10);
+		score_field = new JTextField();
+		score_field.setBounds(309, 168, 161, 22);
+		add(score_field);
+		score_field.setColumns(10);
 		
 		Panel panel = new Panel();
 		panel.setBounds(26, 52, 147, 254);
 		add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		List list = new List();
+
+		listModel = new DefaultListModel<>();
+		for (int i=0;i<favourites_list.length();i++) {
+			JSONObject explrObject = favourites_list.getJSONObject(i);
+			listModel.addElement(explrObject.getString("name"));
+		}
+		list = new JList<>(listModel);
+		list.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				for (int i=0;i<favourites_list.length();i++) {
+					JSONObject explrObject = favourites_list.getJSONObject(i);
+					if (explrObject.getString("name").equals(list.getSelectedValue())){
+						current = explrObject;
+						name_of_Restaurant = explrObject.getString("name");
+						location_field.setText(explrObject.getString("location"));
+						Float score = explrObject.getFloat("score");
+						score_field.setText(score.toString());
+						speciality_field.setText(explrObject.getString("speciality"));
+						type_field.setText(explrObject.getString("type"));
+						name_field.setText(explrObject.getString("name"));
+						schedule_field.setText(explrObject.getString("schedule"));
+						break;
+					}
+
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+
+			}
+		});
 		panel.add(list, BorderLayout.CENTER);
 
 	}

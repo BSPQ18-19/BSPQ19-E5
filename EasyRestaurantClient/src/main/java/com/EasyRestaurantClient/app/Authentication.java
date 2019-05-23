@@ -1,11 +1,14 @@
 package com.EasyRestaurantClient.app;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
 
+
+/**
+ * Window for user authentication
+ */
 public class Authentication {
     private JTabbedPane tabbedPane1;
     private JTextField login_username;
@@ -21,10 +24,11 @@ public class Authentication {
     private JLabel reg_response;
     private JComboBox comboBox1;
     private JFrame frame;
+    private int lang;
+
 
 
     public Authentication() {
-
         ComboItem item1 = new ComboItem("English", "Language1");
         ComboItem item2 = new ComboItem("Greek", "Language2");
         comboBox1.addItem(item1);
@@ -32,9 +36,9 @@ public class Authentication {
         final Locale englishLocale = new Locale("en_US");
         final Locale greekLocale = new Locale("el_GR");
         Locale.setDefault(Locale.getDefault());
-//        Locale.setDefault(englishLocale);
         if (Locale.getDefault().equals(greekLocale)) {
             comboBox1.setSelectedItem(item2);
+
         }
         else {
             comboBox1.setSelectedItem(item1);
@@ -42,8 +46,8 @@ public class Authentication {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserAuthentication userAuthentication = new UserAuthentication();
-                String result = userAuthentication.register(register_username.getText(), register_pass.getText(), name.getText(), email.getText());
+                UserAuthentication_API userAuthenticationAPI = new UserAuthentication_API();
+                String result = userAuthenticationAPI.register(register_username.getText(), register_pass.getText(), name.getText(), email.getText());
                 reg_response.setText(result);
                 JOptionPane.showMessageDialog(tabbedPane1, result);
             }
@@ -51,12 +55,12 @@ public class Authentication {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserAuthentication userAuthentication = new UserAuthentication();
-                String result = userAuthentication.login(login_username.getText(), login_pass.getText());
+                UserAuthentication_API userAuthenticationAPI = new UserAuthentication_API();
+                String result = userAuthenticationAPI.login(login_username.getText(), login_pass.getText());
                 response.setText(result);
                 if (result.equals("Correct")){
                     frame.dispose();
-                    Consult frame = new Consult();
+                    Consult frame = new Consult(login_username.getText());
                     frame.setVisible(true);
                 }
             }
@@ -66,8 +70,10 @@ public class Authentication {
             public void actionPerformed(ActionEvent e) {
                 if (comboBox1.getSelectedItem().toString().equals("Greek")){
                     Locale.setDefault(greekLocale);
+
                 } else {
                     Locale.setDefault(englishLocale);
+
                 }
                 frame.dispose();
                 JFrame frame2 = new JFrame("Authentication");
@@ -77,6 +83,7 @@ public class Authentication {
                 frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame2.pack();
                 frame2.setVisible(true);
+                frame2.setSize(400,300);
             }
         });
     }
@@ -93,6 +100,7 @@ public class Authentication {
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.setSize(400,300);
         authentication.frame = frame;
     }
 }

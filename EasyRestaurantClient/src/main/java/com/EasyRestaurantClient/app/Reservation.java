@@ -14,10 +14,16 @@ import java.awt.event.ActionEvent;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-
+/**
+ * The Reservation class implements the part in the application necessary
+ * to use for making a reservation.
+ *
+ *
+ */
 public class Reservation {
     final static String DATE_FORMAT = "yyyy-MM-dd";
-
+    private String user; /**< name of user  */
+    private String name_Of_Restaurant;
     private JPanel reservationPanel;
     private JButton cancelButton;
     private JButton OKButton;
@@ -31,29 +37,22 @@ public class Reservation {
     private JComboBox HourInput;
     private JComboBox MinuteInput;
     private JComboBox GuestsInput;
-    private JTextPane numofguests;
     private JFrame frame;
 
 
-    private static int language;
-    public int getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(int language) {
-        this.language = language;
-    }
-
-    public Reservation() {
 
 
+
+    public Reservation(String user, String name_Of_Restaurant) {
+
+        this.user = user; /**< updating the User variable so we know who is our current user*/
+        this. name_Of_Restaurant = name_Of_Restaurant; /**< restaurant to be reserved */
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //check if date has a correct form
                 String date = YearInput.getSelectedItem().toString()+"-"+MonthInput.getSelectedItem().toString()+"-"+DayInput.getSelectedItem().toString();
                 String daytime = date+" "+HourInput.getSelectedItem().toString()+":"+MinuteInput.getSelectedItem().toString();
-                System.out.println(daytime);
                 String str_number_clients = (GuestsInput.getSelectedItem().toString());
                 int number_clients = Integer.parseInt(str_number_clients);
                 final boolean response = make_reservation(NameInput.getText(), RestaurantInput.getText(),daytime, number_clients, CommentInput.getText());
@@ -87,7 +86,8 @@ public class Reservation {
 
     }
 
-    static public void main(String[] args) {
+     public void main(String[] args) {
+
 
         makeResInterface();
 
@@ -117,7 +117,7 @@ public class Reservation {
             URL object = new URL(url);
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
-            con.setRequestProperty("Content-Type", "application-json");
+            con.setRequestProperty("Content-Type", "application-filters");
             con.setRequestMethod("POST");
             con.setDoOutput(true);
 
@@ -165,39 +165,52 @@ public class Reservation {
         return response;
     }
 
-    public static void makeResInterface(){
-        Locale englishLocale = new Locale("en_US");
-        Locale greekLocale = new Locale("el_GR");
-        if (language==0) Locale.setDefault(englishLocale);
-        else Locale.setDefault(greekLocale);
+
+
+    //! A function about the graphic interface of the reservation.
+    /*!
+    Putting on the frame the designed form panel and adding the titles.
+
+    */
+
+    public void makeResInterface(){
+
+
+        System.out.println("Reservation Locale is " +Locale.getDefault().toString());
 
         JFrame frame = new JFrame("My Easy Restaurant");
-        Reservation reservation = new Reservation();
-        reservation.frame = frame;
-        frame.setContentPane(reservation.reservationPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame = frame;
+        frame.setContentPane(this.reservationPanel);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
+        RestaurantInput.setText(this.name_Of_Restaurant);
+        NameInput.setText(this.user);
         frame.setVisible(true);
 
 
     }
+
+    //! Negative respond appears when the reservation can not proceed.
+
     public static void negRespondMessage() {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
         final JFrame myFrame2 = new JFrame();
 
         myFrame2.setVisible(true);
-        myFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myFrame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         myFrame2.setBounds(100, 100, 500, 400);
         myFrame2.setTitle("The Easy Restaurant");
         myFrame2.getContentPane().setLayout(null);
 
-        JLabel hFail = new JLabel("Sorry but the reservation request was unable to proceed.");
+        JLabel hFail = new JLabel(resourceBundle.getString("RequestFail"));
         hFail.setBounds(100, 100, 1000, 14);
         myFrame2.getContentPane().add(hFail);
 
         JButton btnOK = new JButton("OK");
         btnOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+
                 try {
                     myFrame2.dispose();
                 } catch (Exception e1) {
@@ -211,24 +224,26 @@ public class Reservation {
 
     }
 
-
+    //! Positive respond appears when the reservation is made.
     public static void posRespondMessage() {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("Resource");
+
         final JFrame myFrame2 = new JFrame();
 
         myFrame2.setVisible(true);
-        myFrame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myFrame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         myFrame2.setBounds(100, 100, 500, 400);
         myFrame2.setTitle("My Easy Restaurant");
         myFrame2.getContentPane().setLayout(null);
 
-        JLabel hFail = new JLabel("Your reservation has been made. Thank you !");
-        hFail.setBounds(100, 100, 1000, 14);
-        myFrame2.getContentPane().add(hFail);
+        JLabel hSucc = new JLabel(resourceBundle.getString("SuccessReserv"));
+        hSucc.setBounds(100, 100, 1000, 14);
+        myFrame2.getContentPane().add(hSucc);
 
         JButton btnOK = new JButton("OK");
         btnOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+
                 try {
                     myFrame2.dispose();
                 } catch (Exception e1) {

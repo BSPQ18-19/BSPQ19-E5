@@ -4,9 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -26,9 +23,9 @@ public class RestaurantTest {
     @PerfTest(invocations = 20, threads = 5)
     @Required(max=10000, median = 2500)
     public void testRestaurants() {
-        Restaurants restaurants = new Restaurants();
+        Restaurants_API restaurantsAPI = new Restaurants_API();
         JSONObject filters = new JSONObject();
-        JSONArray jsonArray = restaurants.restaurant_list(filters);
+        JSONArray jsonArray = restaurantsAPI.restaurant_list(filters);
         assertNotNull(jsonArray);
     }
 }
