@@ -16,12 +16,6 @@ public class Reviews_API {
 
     private static Logger logger = Logger.getLogger(Reviews_API.class.getName());
 
-    static public void main(String[] args) {
-        Reviews_API reviewsAPI = new Reviews_API();
-        JSONArray test = reviewsAPI.reviews_list("Txacoli");
-        reviewsAPI.make_review("Txacoli", "Good food", 3.5);
-    }
-
     /**
      * Gets list of reviews
      * @param restaurant Restaurant to get the reviews

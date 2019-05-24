@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 /**
  * The Reservation class implements the part in the application necessary
@@ -38,6 +39,7 @@ public class Reservation {
     private JComboBox MinuteInput;
     private JComboBox GuestsInput;
     private JFrame frame;
+    private static Logger logger = Logger.getLogger(Reservation.class.getName());
 
 
 
@@ -62,7 +64,7 @@ public class Reservation {
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
-                System.out.println("Reservation is  " + response);
+                logger.info("Reservation is  " + response);
                 reservationPanel.disable();
                 if (!response)negRespondMessage(); // depending on if the reservation is valid or not, the apprpriate message appears.
                 else posRespondMessage();
@@ -136,7 +138,7 @@ public class Reservation {
             out.close();
 
             int respCode = con.getResponseCode();
-            System.out.println("response code " + respCode);
+            logger.info("response code " + respCode);
 
 
             if (respCode == HttpURLConnection.HTTP_OK) {
@@ -151,7 +153,7 @@ public class Reservation {
                 in.close();
 
 
-                System.out.println("\nresponse content " + reply);
+                logger.info("\nresponse content " + reply);
 
                 response = !reply.contains("Wrong");
             } else {
@@ -176,7 +178,7 @@ public class Reservation {
     public void makeResInterface(){
 
 
-        System.out.println("Reservation Locale is " +Locale.getDefault().toString());
+        logger.info("Reservation Locale is " +Locale.getDefault().toString());
 
         JFrame frame = new JFrame("My Easy Restaurant");
         this.frame = frame;
