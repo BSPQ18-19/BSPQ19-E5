@@ -5,7 +5,7 @@ coverage==4.5.3
 Django==2.2
 django-rest-framework==0.1.0
 django-silk==3.0.2
-djangorestframework==3.9.3
+djangorestframework==3.11.2
 gprof2dot==2017.9.19
 idna==2.8
 Jinja2==2.10.1
